@@ -17,13 +17,14 @@
         </ul>
     </header>
 
-    <div class="h-full" data-controller="carousel">
+    <div class="h-full flex flex-col items-center overflow-hidden" data-controller="carousel">
         <%=
             image_tag 'killington',
             alt: "Killington, Vermont",
             data: {
                 carousel_target: "slide"
-            }        
+            },
+            class: "h-full"     
         %>
         <%=
             image_tag "thewhites",
@@ -31,16 +32,8 @@
             data: {
                 carousel_target: "slide"
             },
-            class: "hidden"
+            class: "h-full hidden"
         %>
-
-        <button data-action="click->carousel#next">
-            Next
-        </button>
-
-        <button data-action="click->carousel#previous">
-            Last
-        </button>
 
         <div>
 

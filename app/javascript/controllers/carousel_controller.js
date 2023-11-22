@@ -10,7 +10,7 @@ export default class extends Controller {
   initialize () {
     this.index = this.indexValue
     setInterval(() => {
-        // this.next()  
+        this.next()
     }, 1000 * 2.5)
   }
   
