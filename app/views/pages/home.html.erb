@@ -18,9 +18,21 @@
     </header>
 
     <div class="h-full" data-controller="carousel">
-        <div data-carousel-target="slide">item 1</div>
-        <div data-carousel-target="slide" class="hidden">item 2</div>
-        <div data-carousel-target="slide" class="hidden">item 3</div>
+        <%=
+            image_tag 'killington',
+            alt: "Killington, Vermont",
+            data: {
+                carousel_target: "slide"
+            }        
+        %>
+        <%=
+            image_tag "thewhites",
+            alt: "The White Mountains",
+            data: {
+                carousel_target: "slide"
+            },
+            class: "hidden"
+        %>
 
         <button data-action="click->carousel#next">
             Next

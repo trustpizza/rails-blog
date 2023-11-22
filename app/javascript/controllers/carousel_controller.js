@@ -9,9 +9,9 @@ export default class extends Controller {
   
   initialize () {
     this.index = this.indexValue
-    // setInterval(() => {
-    //     // this.nextSlide
-    // }, 1000 * 1.5)
+    setInterval(() => {
+        // this.next()
+    }, 1000 * 2.5)
   }
   
   showCurrentSlide() {
@@ -44,11 +44,5 @@ export default class extends Controller {
     }
     
     this.showCurrentSlide()
-  }
-  
-  click() {
-    this.next()
-    console.log(this.index)
-    // console.log(this.slideTarget)    
   }
 }
