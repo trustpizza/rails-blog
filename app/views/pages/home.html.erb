@@ -18,11 +18,17 @@
     </header>
 
     <div class="h-full" data-controller="carousel">
-        <div data-carousel-target="slide">
-            <button data-action="click->carousel#click">
-                Test Me
-            </button>
-        </div>
+        <div data-carousel-target="slide">item 1</div>
+        <div data-carousel-target="slide" class="hidden">item 2</div>
+        <div data-carousel-target="slide" class="hidden">item 3</div>
+
+        <button data-action="click->carousel#next">
+            Next
+        </button>
+
+        <button data-action="click->carousel#previous">
+            Last
+        </button>
 
         <div>
 
