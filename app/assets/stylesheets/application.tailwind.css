@@ -5,9 +5,8 @@
 
 @font-face {
     font-family: "moon";
-    src: url("") format("ttf");
+    src: url("moon.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
-.font-cursive {
-    font-family: moon;
-}
