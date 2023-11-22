@@ -9,9 +9,9 @@ export default class extends Controller {
   
   initialize () {
     this.index = this.indexValue
-    setInterval(() => {
-        this.next()
-    }, 1000 * 2.5)
+    // setInterval(() => {
+        // this.next()
+    // }, 1000 * 2.5)
   }
   
   showCurrentSlide() {
