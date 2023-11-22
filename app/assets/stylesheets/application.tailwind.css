@@ -3,31 +3,11 @@
 @tailwind utilities;
 
 
-@layer base {
-  /* @font-face {
-    font-family: 'cursive';
-    src: url('/public/fonts/great-vibes.ttf') format('ttf');
-    font-weight: 400;
-    font-style: normal;
-  } */
-  @font-face {
-    font-family: "cursive";
-    src: url("lemon-love.ttf") format("ttf");
-    font-weight: 400;
-    font-style: normal;
-  }
+@font-face {
+    font-family: "moon";
+    src: url("https://fonts.google.com/specimen/Rubik+Moonrocks?preview.text=A%20Little%20Love%20Story&classification=Display") format("ttf");
 }
 
-@layer components {
-  .font-cursive {
-    font-family: cursive
-  }
-
-  .font-cursive-2 {
-    font-family: cursive;
-  }
+.font-cursive {
+    font-family: moon;
 }
-
-
-
-
