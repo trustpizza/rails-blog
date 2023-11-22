@@ -1,10 +1,47 @@
 <div class="flex flex-col h-screen w-full">
     <header class="p-4 justify-self-start flex justify-around w-full bg-slate-200">
-        <div class="font-cursive font-bold text-xl" >
+        <div class="font-moon font-bold text-2xl" >
             A Little Love Story
         </div>
+    </header>
 
-        <ul class="flex gap-2 hidden">
+    <div class="grow flex flex-col items-center overflow-hidden" data-controller="carousel">
+        <%=
+            image_tag "thewhites",
+            alt: "The White Mountains",
+            data: {
+                carousel_target: "slide"
+            },
+            class: "h-full max-w-none"
+        %>
+        <%=
+            image_tag 'killington',
+            alt: "Killington, Vermont",
+            data: {
+                carousel_target: "slide"
+            },
+            class: "h-full max-w-none hidden"
+        %>
+        <%=
+            image_tag "snack-on-mountain-lake",
+            alt: "A Snack on top of a lake overlooking a mountain",
+            data: {
+                carousel_target: "slide"
+            },
+            class: "h-full max-w-none hidden"
+        %>
+        <%=
+            image_tag "axel-and-arlo",
+            alt: "A man and his dog with a mountain sunset behind",
+            data: {
+                carousel_target: "slide"
+            },
+            class: "h-full max-w-none hidden"
+        %>
+    <div>
+
+    <nav class="self-end bg-slate-200 p-2 w-screen flex justify-center items-center">  
+        <ul class="flex gap-2">
             <li>
                 <%= link_to 'Journal' %>
             </li>
@@ -15,44 +52,5 @@
                 <%= link_to 'Map' %>
             </li>
         </ul>
-    </header>
-
-    <div class="h-full flex flex-col items-center overflow-hidden" data-controller="carousel">
-        <%=
-            image_tag 'killington',
-            alt: "Killington, Vermont",
-            data: {
-                carousel_target: "slide"
-            },
-            class: "h-full"     
-        %>
-        <%=
-            image_tag "thewhites",
-            alt: "The White Mountains",
-            data: {
-                carousel_target: "slide"
-            },
-            class: "h-full hidden"
-        %>
-        <%=
-            image_tag "snack-on-mountain-lake",
-            alt: "A Snack on top of a lake overlooking a mountain",
-            data: {
-                carousel_target: "slide"
-            },
-            class: "h-full hidden"
-        %>
-        <%=
-            image_tag "axel-and-arlo",
-            alt: "A man and his dog with a mountain sunset behind",
-            data: {
-                carousel_target: "slide"
-            },
-            class: "h-full hidden"
-        %>
-    <div>
-
-    <nav class="self-end bg-slate-200 p-2 w-screen flex justify-center items-center">
-        ❤️
     </nav>
 </div>
