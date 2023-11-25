@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    
+}
 
 @font-face {
     font-family: "moon";
