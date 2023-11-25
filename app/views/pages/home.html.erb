@@ -5,9 +5,13 @@
         </div>
     </header>
 
-    <div class="grow text-center overflow-hidden"> <!-- Slider Parent -->
-        <div class="max-h-full flex items-center overflow-x-auto scroll-auto snap-mandatory slides" data-controller="carousel">
-            <%=
+    <div class="grow text-center overflow-x-auto flex items-center justify-center p-2"> <!-- Slider Parent -->
+        <div class="max-h-full inline-flex items-center justify-center  scroll-auto snap-mandatory slides gap-2" data-controller="carousel">
+            <div class="grow h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center">1</div>
+            <div class="h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center hidden">2</div>
+            <div class="h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center hidden">3</div>
+            <div class="h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center hidden">4</div>
+            <%#=
                 image_tag "thewhites",
                 alt: "The White Mountains",
                 data: {
@@ -16,7 +20,7 @@
                 },
                 class: "h-full max-w-none"
             %>
-            <%=
+            <%#=
                 image_tag 'killington',
                 alt: "Killington, Vermont",
                 data: {
@@ -24,7 +28,7 @@
                 },
                 class: "h-full max-w-none"
             %>
-            <%=
+            <%#=
                 image_tag "snack-on-mountain-lake",
                 alt: "A Snack on top of a lake overlooking a mountain",
                 data: {
@@ -32,13 +36,13 @@
                 },
                 class: "h-full max-w-none"
             %>
-            <%=
+            <%#=
                 image_tag "axel-and-arlo",
                 alt: "A man and his dog with a mountain sunset behind",
                 data: {
                     carousel_target: "slide"
                 },
-                class: "h-full max-w-none hidden"
+                class: "h-full max-w-none"
             %>
         </div>
     </div>

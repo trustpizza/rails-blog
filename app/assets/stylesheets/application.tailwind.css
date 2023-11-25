@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-    .slides {
+    /* .slides {
         display: flex;
   
         overflow-x: auto;
@@ -13,8 +13,8 @@
         
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
-    }
-
+    } */
+/* 
     .slides > * {
         scroll-snap-align: start;
         flex-shrink: 0;
@@ -30,7 +30,7 @@
         justify-content: center;
         align-items: center;
         font-size: 100px;
-    }
+    } */
 }
 
 @font-face {
