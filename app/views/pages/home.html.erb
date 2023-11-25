@@ -6,7 +6,7 @@
     </header>
 
     <div class="text-center overflow-hidden"> <!-- Slider Parent -->
-        <div class="overflow-x-auto flex snap-mandatory scroll-smooth" data-controller="carousel">
+        <div class="grow flex items-center overflow-x-auto scroll-auto snap-mandatory" data-controller="carousel">
             <%=
                 image_tag "thewhites",
                 alt: "The White Mountains",
@@ -22,7 +22,7 @@
                 data: {
                     carousel_target: "slide"
                 },
-                class: "h-full max-w-none"
+                class: "h-full max-w-none hidden"
             %>
             <%=
                 image_tag "snack-on-mountain-lake",
@@ -30,7 +30,7 @@
                 data: {
                     carousel_target: "slide"
                 },
-                class: "h-full max-w-none"
+                class: "h-full max-w-none hidden"
             %>
             <%=
                 image_tag "axel-and-arlo",
@@ -38,7 +38,7 @@
                 data: {
                     carousel_target: "slide"
                 },
-                class: "h-full max-w-none"
+                class: "h-full max-w-none hidden"
             %>
         <div>
     </div>
