@@ -5,9 +5,9 @@
         </div>
     </header>
 
-    <div class="grow text-center overflow-x-auto flex items-center justify-center p-2"> <!-- Slider Parent -->
-        <div class="max-h-full inline-flex items-center justify-center  scroll-auto snap-mandatory slides gap-2" data-controller="carousel">
-            <div data-carousel-target="slide" class="grow h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center">
+    <div class="grow text-center overflow-hidden flex items-center justify-center p-2"> <!-- Slider Parent -->
+        <div class="h-full w-64 overflow-x-auto grow flex items-center scroll-auto snap-mandatory" data-controller="carousel">
+            <div data-carousel-target="slide" class="min-w-full min-h-full snap-start flex items-center justify-center origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
                 1
                 <%#=
                     image_tag "thewhites",
@@ -15,7 +15,7 @@
                     class: "h-full max-w-none"
                 %>
             </div>
-            <div data-carousel-target="slide" class="h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center hidden">
+            <div data-carousel-target="slide" class="min-w-full min-h-full snap-start flex items-center justify-center origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
                 2
                 <%#=
                     image_tag 'killington',
