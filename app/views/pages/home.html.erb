@@ -1,12 +1,12 @@
 <div class="flex flex-col h-screen w-full">
     <header class="p-4 justify-self-start flex justify-around w-full bg-slate-200">
         <div class="font-moon font-bold text-2xl" >
-            A Little Love Story
+            A Little Travel Story
         </div>
     </header>
 
-    <div class="text-center overflow-hidden"> <!-- Slider Parent -->
-        <div class="grow flex items-center overflow-x-auto scroll-auto snap-mandatory" data-controller="carousel">
+    <div class="grow max-h-full text-center overflow-hidden"> <!-- Slider Parent -->
+        <div class="max-h-full flex items-center overflow-x-auto scroll-auto snap-mandatory" data-controller="carousel">
             <%=
                 image_tag "thewhites",
                 alt: "The White Mountains",
@@ -22,7 +22,7 @@
                 data: {
                     carousel_target: "slide"
                 },
-                class: "h-full max-w-none hidden"
+                class: "h-full max-w-none"
             %>
             <%=
                 image_tag "snack-on-mountain-lake",
@@ -30,7 +30,7 @@
                 data: {
                     carousel_target: "slide"
                 },
-                class: "h-full max-w-none hidden"
+                class: "h-full max-w-none"
             %>
             <%=
                 image_tag "axel-and-arlo",
@@ -40,7 +40,7 @@
                 },
                 class: "h-full max-w-none hidden"
             %>
-        <div>
+        </div>
     </div>
 
     <nav class="self-end bg-slate-200 p-2 w-screen flex justify-center items-center">  
