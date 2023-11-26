@@ -7,38 +7,35 @@
 
     <div class="grow text-center overflow-hidden flex items-center justify-center p-2"> <!-- Slider Parent -->
         <div class="h-full w-64 overflow-x-auto grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel">
-            <div data-carousel-target="slide" class="min-w-full min-h-full snap-center flex items-center justify-center origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
-                1
-                <%#=
-                    image_tag "thewhites",
-                    alt: "The White Mountains",
-                    class: "h-full max-w-none"
-                %>
-            </div>
-            <div data-carousel-target="slide" class="min-w-full min-h-full snap-center flex items-center justify-center origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
-                2
-                <%#=
-                    image_tag 'killington',
-                    alt: "Killington, Vermont",
-                    class: "h-full max-w-none"
-                %>  
-            </div>
-            <div data-carousel-target="slide" class="h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center hidden">
-                3
-                <%#=
-                    image_tag "snack-on-mountain-lake",
-                    alt: "A Snack on top of a lake overlooking a mountain",
-                    class: "h-full max-w-none"
-                %>
-            </div>
-            <div data-carousel-target="slide" class="h-full snap-start shrink-0 origin-center scale-100 tarnsition-transform relative h-20 w-20 bg-red-200 flex items-center justify-center hidden">
-                4
-                <%#=
-                    image_tag "axel-and-arlo",
-                    alt: "A man and his dog with a mountain sunset behind",
-                    class: "h-full max-w-none"
-                %>
-            </div>
+            <% 
+                images = [
+                    {
+                        title: "thewhites",
+                        alt: "The White Mountains"
+                    },
+                    {
+                        title: "killington",
+                        alt: "Killington, Vermont"
+                    },
+                    {
+                        title: "snack-on-mountain-lake",
+                        alt: "A Snack on top of a lake overlooking a mountain"
+                    },
+                    {
+                        title: "axel-and-arlo",
+                        alt: "A man and his dog with a mountain sunset behind"
+                    }
+                ]
+            %>
+            <%images.each do |img| %>
+                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
+                    <%= image_tag img[:title],
+                        alt: img[:alt],
+                        class: "max-h-full"
+                    
+                    %>
+                </div>
+            <% end %>
 
         </div>
     </div>
