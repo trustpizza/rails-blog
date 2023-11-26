@@ -14,19 +14,27 @@ export default class extends Controller {
     // setInterval(() => {
     //     this.next()
     // }, 1000 * 2.5)
-
+    /*
+    Ways I can properly slide to the right slide:
+      I can swipe a 1/4 of the length of the screen every few moments on "next"
+      Do the opposite on previous
+    */
   }
   
   showCurrentSlide() {
-    this.slideTargets.forEach((slide, i) => {
-      slide.classList.toggle("hidden", i !== this.index)
-    });
+    // this.slideTargets.forEach((slide, i) => {
+    //   slide.classList.toggle("active", i !== this.index)
+    // });
     
-    this.buttonTargets.forEach((button, i) => {
-      // button.toggleAttribute("active")
-      button.classList.toggle("active", i !== this.index)
-    })
+    // this.buttonTargets.forEach((button, i) => {
+    //   // button.toggleAttribute("active")
+    //   button.classList.toggle("active", i !== this.index)
+    // })
     
+  }
+
+  swipeRight() {
+
   }
   
   next() {
