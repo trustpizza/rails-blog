@@ -6,7 +6,7 @@
     </header>
 
     <div class="grow text-center overflow-hidden flex items-center justify-center p-2"> <!--  -->
-        <div class="h-full w-64 overflow-x-auto grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel"> <!-- Slider Container -->
+        <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']" data-controller="carousel"> <!-- Slider Container -->
             <% #images
                 images = [
                     {
@@ -28,7 +28,7 @@
                 ]
             %>
             <%images.each do |img| %>
-                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
+                <div data-carousel-target="slide" class="elative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none">
                     <%= image_tag img[:title],
                         alt: img[:alt],
                         class: "max-h-full"
