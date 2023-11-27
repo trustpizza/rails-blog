@@ -5,22 +5,17 @@ export default class extends Controller {
   static values = {
     index: Number,
     maximum: Number,
-    default: 0,
   }
 
 
   
   initialize () {
     this.maximum = this.slideTargets.length // Max number before reset
+    this.index = 0
 
-    document.addEventListener("click", () => {
-      this.index ++
-      console.log(this.index, `max: ${this.maximum}`)
-
-    })
-    // setInterval(() => {
-    //     this.next()
-    // }, 1000 * 2.5)
+    setInterval(() => {
+        this.next()
+    }, 1000 * 2.5)
     /*
     Ways I can properly slide to the right slide:
       I can swipe a 1/4 of the length of the screen every few moments on "next"
@@ -29,15 +24,9 @@ export default class extends Controller {
   }
   
   showCurrentSlide() {
-    // this.slideTargets.forEach((slide, i) => {
-    //   slide.classList.toggle("active", i !== this.index)
-    // });
-    
-    // this.buttonTargets.forEach((button, i) => {
-    //   // button.toggleAttribute("active")
-    //   button.classList.toggle("active", i !== this.index)
-    // })
-    
+    const cur_ele = document.getElementById(`slide_${this.index}`)
+    console.log(cur_ele)
+    cur_ele.scrollIntoView({behavior: "smooth"})
   }
 
   swipeRight() {
