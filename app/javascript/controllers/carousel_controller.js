@@ -5,28 +5,35 @@ export default class extends Controller {
   static values = {
     index: Number,
     maximum: Number,
+    swiperSeconds: Number
   }
   
   initialize () {
     this.maximum = this.slideTargets.length // Max number before reset
     this.index = 0  
-    
-    let timer
+    this.swiperSeconds = 2.5 // Default val for timer to wait before swipes (seconds)
+    this.createTimer()
+  }
+
+  createTimer() {
+    let timer;
 
     timer = setInterval(() => {
-      this.next()
-    }, 1000 * 2.5)
-
-    document.addEventListener("mouseover", () => {
-      clearInterval(timer)
+      this.next();
+    }, 1000 * this.swiperSeconds);
+    
+    const resetTimer = () => {
+      clearInterval(timer);
+      
       timer = setInterval(() => {
-        this.next()
-      }, 1000 * 2.5)
-    })
+        this.next();
+      }, 1000 * this.swiperSeconds);
+    }
+
+    document.addEventListener("mousemove", () => {
+      resetTimer()
+    });
   }
-  /* I need a way to figure out which element is currenlty being targetted */
-  
-  
   
   getCurrentEle() {
     for (let i = 0; i < this.maximum; i++) {
