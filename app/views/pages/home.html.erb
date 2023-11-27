@@ -27,12 +27,12 @@
                     }
                 ]
             %>
-            <%images.each do |img| %>
+            <%images.each_with_index do |img, idx| %>
                 <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
                     <%= image_tag img[:title],
                         alt: img[:alt],
-                        class: "max-h-full"
-                    
+                        class: "max-h-full",
+                        id: "slide_" + idx.to_s
                     %>
                 </div>
             <% end %>

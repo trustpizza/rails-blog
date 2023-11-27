@@ -4,13 +4,20 @@ export default class extends Controller {
   static targets = [ "slide", "button" ]
   static values = {
     index: Number,
-    default: 0
+    maximum: Number,
+    default: 0,
   }
 
 
   
   initialize () {
-    this.index = this.indexValue
+    this.maximum = this.slideTargets.length // Max number before reset
+
+    document.addEventListener("click", () => {
+      this.index ++
+      console.log(this.index, `max: ${this.maximum}`)
+
+    })
     // setInterval(() => {
     //     this.next()
     // }, 1000 * 2.5)
