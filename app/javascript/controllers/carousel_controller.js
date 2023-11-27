@@ -6,35 +6,58 @@ export default class extends Controller {
     index: Number,
     maximum: Number,
   }
-
-
   
   initialize () {
     this.maximum = this.slideTargets.length // Max number before reset
-    this.index = 0
+    this.index = 0  
+    
+    let timer
 
-    setInterval(() => {
-        this.next()
+    timer = setInterval(() => {
+      this.next()
     }, 1000 * 2.5)
-    /*
-    Ways I can properly slide to the right slide:
-      I can swipe a 1/4 of the length of the screen every few moments on "next"
-      Do the opposite on previous
-    */
+
+    document.addEventListener("mouseover", () => {
+      clearInterval(timer)
+      timer = setInterval(() => {
+        this.next()
+      }, 1000 * 2.5)
+    })
   }
+  /* I need a way to figure out which element is currenlty being targetted */
+  
+  
+  
+  getCurrentEle() {
+    for (let i = 0; i < this.maximum; i++) {
+      const element = document.getElementById(`slide_${i}`);
+      if (this.isInViewport(element)) {
+        this.index = i
+        break
+      }
+    }
+  }
+  
+  isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+  }
+  
   
   showCurrentSlide() {
     const cur_ele = document.getElementById(`slide_${this.index}`)
-    console.log(cur_ele)
     cur_ele.scrollIntoView({behavior: "smooth"})
-  }
-
-  swipeRight() {
-
   }
   
   next() {
-    if ((this.index + 1) > (this.slideTargets.length - 1)) {
+    this.getCurrentEle()
+    
+    if ((this.index + 1) > (this.maximum- 1)) {
       this.index = 0
     } else {
       this.index++
@@ -42,14 +65,5 @@ export default class extends Controller {
     
     this.showCurrentSlide()
   }
-  
-  previous() {
-    if ((this.index -1 ) < 0) {
-      this.index = this.slideTargets.length - 1
-    } else {
-      this.index--
-    }
-    
-    this.showCurrentSlide()
-  }
 }
+  
