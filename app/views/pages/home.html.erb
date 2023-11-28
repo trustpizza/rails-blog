@@ -5,9 +5,9 @@
         </div>
     </header>
 
-    <div class="grow text-center overflow-hidden flex items-center justify-center p-2"> <!--  -->
-        <div class="h-full w-64 overflow-x-auto grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel"> <!-- Slider Container -->
-            <% #images
+    <div class="grow text-center overflow-hidden flex items-center justify-center p-2">
+        <div class="h-full w-64 overflow-x-auto grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel" > <!-- Slider Container -->
+            <% #imagess
                 images = [
                     {
                         title: "thewhites",
@@ -28,12 +28,14 @@
                 ]
             %>
             <%images.each_with_index do |img, idx| %>
-                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform relative bg-red-200 border-2 relative">
-                    <%= image_tag img[:title],
-                        alt: img[:alt],
-                        class: "max-h-full",
-                        id: "slide_" + idx.to_s
-                    %>
+                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform flex items-center relative bg-red-200 border-2 overflow-hidden">
+                        <div class="relative overflow-hidden h-full">
+                            <%= image_tag img[:title],
+                                alt: img[:alt],
+                                class: "object-cover w-full h-full",
+                                id: "slide_" + idx.to_s
+                            %>
+                        </div>
                 </div>
             <% end %>
 
