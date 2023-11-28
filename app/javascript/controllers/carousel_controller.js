@@ -33,7 +33,7 @@ export default class extends Controller {
     const timerResetEvents = ["mousemove", "touchstart"]
 
     timerResetEvents.forEach(event => {
-      document.addEventListener(event, () => {
+      this.element.addEventListener(event, () => {
         resetTimer()
       })
     });
