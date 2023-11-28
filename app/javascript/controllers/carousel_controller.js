@@ -30,9 +30,14 @@ export default class extends Controller {
       }, 1000 * this.swiperSeconds);
     }
 
-    document.addEventListener("mousemove", () => {
-      resetTimer()
+    const timerResetEvents = ["mousemove", "touchstart"]
+
+    timerResetEvents.forEach(event => {
+      document.addEventListener(event, () => {
+        resetTimer()
+      })
     });
+
   }
   
   getCurrentEle() {
