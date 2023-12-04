@@ -1,14 +1,20 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Posts</h1>
-    <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="posts" class="min-w-full">
-    <%= render @posts %>
-  </div>
+<div class="flex justify-between items-center mb-4">
+  <h1 class="font-bold text-4xl">Posts</h1>
+  <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white block font-medium" %>
 </div>
+
+<% @posts.each do |post| %>
+  <%= link_to edit_post_path(post) do %>
+    <div class="mb-3">
+      <div class="p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <%=post.title%>
+          </h5>
+        <p class="font-normal text-gray-700 dark:text-gray-400">
+          <%=post.description%>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

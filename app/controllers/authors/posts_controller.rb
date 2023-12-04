@@ -1,19 +1,15 @@
 module Authors
   class PostsController < AuthorsController
-    before_action :set_post, only: %i[ show edit update destroy ]
+    before_action :set_post, only: %i[ edit update destroy ]
 
     # GET /posts or /posts.json
     def index
-      @posts = Post.all
-    end
-
-    # GET /posts/1 or /posts/1.json
-    def show
+      @posts = current_author.posts
     end
 
     # GET /posts/new
     def new
-      @post = Post.new
+      @post = current_author.posts.build
     end
 
     # GET /posts/1/edit
@@ -22,7 +18,7 @@ module Authors
 
     # POST /posts or /posts.json
     def create
-      @post = Post.new(post_params)
+      @post = current_author.posts.build(post_params)
 
       respond_to do |format|
         if @post.save
@@ -61,12 +57,12 @@ module Authors
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.find(params[:id])
+        @post = current_author.posts.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def post_params
-        params.require(:post).permit(:title, :description, :published, :published_at, :author_id)
+        params.require(:post).permit(:title, :description)
       end
   end
 end
