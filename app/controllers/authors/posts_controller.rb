@@ -1,5 +1,5 @@
 module Authors
-  class PostsController < ApplicationController
+  class PostsController < AuthorsController
     before_action :set_post, only: %i[ show edit update destroy ]
 
     # GET /posts or /posts.json
