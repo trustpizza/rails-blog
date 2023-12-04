@@ -1,18 +1,19 @@
 module Authors
   class PostElementsController < AuthorsController
     before_action :set_post
-    before_action :set_post_element, only: %i[ show edit update destroy ]
+    before_action :set_post_element, only: %i[ update destroy ]
 
     # POST /post_elements or /post_elements.json
     def create
-      @post_element = PostElement.new(post_element_params)
+      @post_element = @post.post_elements.build 
 
       respond_to do |format|
         if @post_element.save
-          format.html { redirect_to post_element_url(@post_element), notice: "Post element was successfully created." }
+          format.html { redirect_to @post }
           # format.json { render :show, status: :created, location: @post_element }
         else
-          format.html { render :new, status: :unprocessable_entity }
+          format.html { redirect_to @post, notice: @post_element.errors.full_messages.join(". ") << "." }
+          # format.html { render :new, status: :unprocessable_entity }
           # format.json { render json: @post_element.errors, status: :unprocessable_entity }
         end
       end
@@ -44,7 +45,7 @@ module Authors
     private
       # sets posts
       def set_post
-        @post = current_author.post.find(params[:post_id])
+        @post = current_author.posts.find(params[:post_id])
       end
 
       # Use callbacks to share common setup or constraints between actions.
@@ -54,7 +55,7 @@ module Authors
 
       # Only allow a list of trusted parameters through.
       def post_element_params
-        params.require(:post_element).permit(:element_type, :content, :post_id, :position)
+        params.require(:post_element).permit(:element_type, :content )
       end
   end
 end
