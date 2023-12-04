@@ -4,7 +4,9 @@
   <div class="grid grid-cols-3 gap-2">
     <%= render "form", post: @post %>
     <div>
-    <%= form_with model: [@post, @paragraph] do |form| %>
+
+    <%= form_with model: [ @post, @paragraph ] do |form| %>
+      <%# form.hidden_field :element_type, value: 'paragraph'%>
       <%=form.submit%>
     <% end %>
     </div>

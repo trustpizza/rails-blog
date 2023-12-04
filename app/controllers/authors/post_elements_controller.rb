@@ -9,11 +9,10 @@ module Authors
 
       respond_to do |format|
         if @post_element.save
-          format.html { redirect_to @post }
+          format.html { redirect_to edit_post_path(@post) }
           # format.json { render :show, status: :created, location: @post_element }
         else
-          format.html { redirect_to @post, notice: @post_element.errors.full_messages.join(". ") << "." }
-          # format.html { render :new, status: :unprocessable_entity }
+          format.html { redirect_to edit_post_path(@post), notice: @post_element.errors.full_messages.join(". ") << "." }
           # format.json { render json: @post_element.errors, status: :unprocessable_entity }
         end
       end
@@ -54,7 +53,7 @@ module Authors
       end
 
       # Only allow a list of trusted parameters through.
-      def post_element_params
+      def post_element_params 
         params.require(:post_element).permit(:element_type, :content )
       end
   end
