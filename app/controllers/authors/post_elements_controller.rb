@@ -1,20 +1,21 @@
 module Authors
   class PostElementsController < AuthorsController
-    before_action :set_post
+    before_action :set_post 
     before_action :set_post_element, only: %i[ update destroy ]
 
     # POST /post_elements or /post_elements.json
     def create
-      @post_element = @post.post_elements.build 
+      @post_element = @post.post_elements.build
 
       respond_to do |format|
         if @post_element.save
-          format.html { redirect_to edit_post_path(@post) }
+          # format.html { redirect_to edit_post_path(@post) }
           # format.json { render :show, status: :created, location: @post_element }
         else
-          format.html { redirect_to edit_post_path(@post), notice: @post_element.errors.full_messages.join(". ") << "." }
+          # format.html { redirect_to edit_post_path(@post), notice: @post_element.errors.full_messages.join(". ") << "." }
           # format.json { render json: @post_element.errors, status: :unprocessable_entity }
         end
+        format.html { redirect_to edit_post_path(@post), notice: post_element_params}
       end
     end
 
