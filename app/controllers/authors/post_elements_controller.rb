@@ -5,17 +5,14 @@ module Authors
 
     # POST /post_elements or /post_elements.json
     def create
-      @post_element = @post.post_elements.build
+      @post_element = @post.post_elements.build(post_element_params)
 
       respond_to do |format|
         if @post_element.save
-          # format.html { redirect_to edit_post_path(@post) }
-          # format.json { render :show, status: :created, location: @post_element }
+          format.html { redirect_to edit_post_path(@post)}
         else
-          # format.html { redirect_to edit_post_path(@post), notice: @post_element.errors.full_messages.join(". ") << "." }
-          # format.json { render json: @post_element.errors, status: :unprocessable_entity }
+          format.html { redirect_to edit_post_path(@post), notice: @post_element.errors.full_messages.join(". ") << "." }
         end
-        format.html { redirect_to edit_post_path(@post), notice: post_element_params}
       end
     end
 
@@ -24,10 +21,8 @@ module Authors
       respond_to do |format|
         if @post_element.update(post_element_params)
           format.html { redirect_to post_element_url(@post_element), notice: "Post element was successfully updated." }
-          # format.json { render :show, status: :ok, location: @post_element }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          # format.json { render json: @post_element.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -38,7 +33,6 @@ module Authors
 
       respond_to do |format|
         format.html { redirect_to post_elements_url, notice: "Post element was successfully destroyed." }
-        # format.json { head :no_content }
       end
     end
 
