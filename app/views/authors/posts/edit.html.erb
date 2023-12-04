@@ -1,15 +1,29 @@
 <div class="mx-auto xl:w-2/3 w-full">
-  <%= link_to "Back", posts_path, class: "mb-2 rounded-lg py-3 px-5 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
 
   <div class="grid grid-cols-3 gap-2">
-    <!-- Form for editing the post -->
-    <%= render "form", post: @post %>
-
+    <span>
+      <%= link_to "Back", posts_path, class: " block mb-2 rounded-lg py-3 px-5 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
+      <!-- Form for editing the post -->
+      <%= render "form", post: @post %>
+    </span>
     <!-- Form for creating a PostElement -->
-    <%= form_with(model: [ @post, @paragraph ]) do |form| %>
-      <%= form.hidden_field :element_type, value: 'paragraph' %>
-      <%= form.submit 'Paragraph' %>
-    <% end %>
+    <span>
+      <%= form_with(model: [ @post, @paragraph ]) do |form| %>
+        <%= form.hidden_field :element_type, value: 'paragraph' %>
+        <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+      <% end %>
+
+      <!--Rendering Each Post Element -->
+      <% @post.post_elements.each do |element| %>
+        <% if element.persisted? %>
+          <%= form_with(model: [ @post, element ]) do |form| %>
+            <%= form.text_area :contents %>
+            <%= form.submit 'Save', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </span>
   </div>
 
 </div>
