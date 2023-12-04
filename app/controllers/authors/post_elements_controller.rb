@@ -9,10 +9,12 @@ module Authors
 
       respond_to do |format|
         if @post_element.save
-          format.html { redirect_to edit_post_path(@post) }
+          notice = nil
         else
-          format.html { redirect_to edit_post_path(@post), notice: @post_element.errors.full_messages.join(". ") << "." }
+          notice = @post_element.errors.full_messages.join(". ") << "."
         end
+
+        format.html {redirect_to edit_post_path(@post), notice: notice}
       end
     end
 
