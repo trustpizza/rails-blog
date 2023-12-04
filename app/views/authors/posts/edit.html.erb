@@ -8,7 +8,7 @@
     </span>
     <!-- Form for creating a PostElement -->
     <span>
-      <%= form_with(model: [ @post, @paragraph ]) do |form| %>
+      <%= form_with(model: [ @post, @paragraph ],  class: "mb-2") do |form| %>
         <%= form.hidden_field :element_type, value: 'paragraph' %>
         <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
       <% end %>
@@ -17,7 +17,7 @@
       <% @post.post_elements.each do |element| %>
         <% if element.persisted? %>
           <%= form_with(model: [ @post, element ]) do |form| %>
-            <%= form.text_area :contents %>
+            <%= form.text_area :contents %> <!--This ought to be turned into a turbostream eventually-->
             <%= form.submit 'Save', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
           <% end %>
         <% end %>
