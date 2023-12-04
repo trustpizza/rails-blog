@@ -1,6 +1,12 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto xl:w-2/3 w-full">
   <%= link_to "Back", posts_path, class: "mb-2 rounded-lg py-3 px-5 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
 
-  <%= render "form", post: @post %>
-
+  <div class="grid grid-cols-3 gap-2">
+    <%= render "form", post: @post %>
+    <div>
+    <%= form_with model: [@post, @paragraph] do |form| %>
+      <%=form.submit%>
+    <% end %>
+    </div>
+  </div>
 </div>
