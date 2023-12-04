@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :post_elements
   devise_for :authors
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "pages#home"
