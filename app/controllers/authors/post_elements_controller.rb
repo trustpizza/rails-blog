@@ -32,7 +32,7 @@ module Authors
     # DELETE /post_elements/1 or /post_elements/1.json
     def destroy
       @post_element.destroy!
-
+      
       respond_to do |format|
         format.html { redirect_to post_elements_url, notice: "Post element was successfully destroyed." }
       end
