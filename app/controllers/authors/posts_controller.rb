@@ -1,7 +1,6 @@
 module Authors
   class PostsController < AuthorsController
     before_action :set_post, only: %i[ edit update destroy ]
-    before_action :set_active_storage_url_options
 
     # GET /posts or /posts.json
     def index
@@ -52,13 +51,6 @@ module Authors
     end
 
     private
-      def set_active_storage_url_options
-        ActiveStorage::Current.url_options = {
-          host: request.base_url
-          # Add other options as needed (e.g., protocol, port, etc.)
-        }
-      end
-
       # Use callbacks to share common setup or constraints between actions.
       def set_post
         @post = current_author.posts.find(params[:id])
