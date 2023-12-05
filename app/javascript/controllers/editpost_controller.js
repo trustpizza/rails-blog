@@ -4,7 +4,7 @@ export default class extends Controller {
     static targets = [ 'form', 'content', 'button' ]
 
     initialize() {
-
+        
         this.contentTarget.addEventListener("click", () => {
             this.toggleFormAndContent()
         });
