@@ -10,7 +10,7 @@
     <span>
       <%= form_with(model: [ @post, @paragraph ],  class: "mb-2") do |form| %>
         <%= form.hidden_field :element_type, value: 'paragraph' %>
-        <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+        <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
       <% end %>
 
       <!--Rendering Each Post Element -->
@@ -20,12 +20,19 @@
             <% if element.persisted? %>
                 <div class="mb-2" data-controller="editpost">
                   <div class="paragraph-content" data-editpost-target="content">
-                    <%= element.content %>
+                    <% if element.content.persisted? %>
+                      <%= element.content %>
+                    <% else %>
+                      Click to Add Content
+                    <% end %>
                   </div>
-                  <div class="paragraph-form hidden" data-editpost-target="form">
+                  <div class="hidden" data-editpost-target="form">
                     <%= form_with(model: [ @post, element ]) do |form| %>
                       <%= form.rich_text_area :content %> <!--This ought to be turned into a turbostream eventually-->
-                      <%= form.submit 'Save', data: {editpost_target: 'saveButton'},  class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer my-2" %>
+                      <div class="flex gap-2">
+                        <%= form.submit 'Save', data: {editpost_target: 'saveButton'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
+                        <button class="block rounded-lg py-3 px-5 bg-gray-500 hover:bg-gray-600 text-white font-medium cursor-pointer my-2"> Cancel </button>
+                      </div>
                     <% end %>
                   </div>
                 </div>
