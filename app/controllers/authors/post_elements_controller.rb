@@ -22,7 +22,7 @@ module Authors
     def update
       respond_to do |format|
         if @post_element.update(post_element_params)
-          format.html { redirect_to edit_post_path(@post_element.post), notice: "yay" }
+          format.html { redirect_to edit_post_path(@post_element.post)}
         else
           format.html { render :edit, status: :unprocessable_entity }
         end
