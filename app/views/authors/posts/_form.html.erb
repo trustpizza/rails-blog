@@ -1,4 +1,4 @@
-<%= form_with(model: post, class: "bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-hidden") do |form| %>
+<%= form_with(model: post, class: "bg-white border shadow-md rounded-sm px-8 pt-6 pb-8 mb-4 overflow-hidden") do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,26 +11,26 @@
     </div>
   <% end %>
 
-  <div class="my-5">
+  <div class="my-2">
     <%= form.label :title, class: "block text-xl font-medium text-gray-700" %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-black outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-black outline-none p-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-2">
     <%= form.label :description, class: "block text-xl font-medium text-gray-700" %>
-    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-black outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :description, rows: 4, class: "block h-10 shadow rounded-md border border-black outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-2 overflow-hidden">
     <%= form.label :header_image, class: "block text-xl font-medium text-gray-700" %>
-    <%= form.file_field :header_image %>
+    <%= form.file_field :header_image, class: "py-2 mt-2 w-full"%>
     <% if post.header_image.present? %>
-      <%= image_tag post.header_image, class: "max-w-full" %>
+      <%= image_tag post.header_image, class: "max-w-full shadow-md max-h-32 w-auto" %>
     <% else %>
     <% end %>
   </div>
 
   <div class="">
-    <%= form.submit class: "w-full block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
+    <%= form.submit class: "w-full block rounded-sm py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
   </div>
 <% end %>
