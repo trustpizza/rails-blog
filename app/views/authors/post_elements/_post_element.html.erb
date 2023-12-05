@@ -1,0 +1,7 @@
+<% if  post_element.paragraph? %>
+   <%= render 'authors/post_elements/paragraph_element', post_element: post_element%>
+<% elsif  post_element.image? %>
+    <%= render 'authors/post_elements/image_element', post_element: post_element %>
+<% elsif  post_element.video? %>
+    <%= render 'authors/post_elements/video_element', post_element: post_element %>
+<% end %>
