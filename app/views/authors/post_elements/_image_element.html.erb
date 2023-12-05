@@ -1,29 +1,36 @@
-<div class="max-w-full mb-2 p-2 mx-auto bg-white rounded-md overflow-hidden shadow-lg hover:bg-slate-100 transition duration-100 cursor-pointer" data-controller="editpost">
-    <div class="leading-6" data-editpost-target="content">
+<div class="max-w-lg mb-2 p-1 mx-auto bg-white shadow-lg hover:bg-slate-100 transition duration-100 cursor-pointer">
+    <div class="leading-6 mb-2">
         <% if post_element.image.present? %>
-            <%= image_tag post_element.image %>
-        <% else %>
-            <span class="underline cursor-pointer">Click to Add Image</span>
-        <% end %>
-    </div>
-    <div class="hidden" data-editpost-target="form">
-        <%= form_with(model: [ @post,  post_element ]) do |form| %>
-            <%= form.file_field :image %>
-            <div class="flex gap-2 justify-between items-center">
-                <span class="flex gap-2">
-                    <%= form.submit 'Save', data: {editpost_target: 'button'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
-                    <a class="block rounded-lg py-3 px-5 bg-gray-500 hover:bg-gray-600 text-white font-medium cursor-pointer my-2" data-editpost-target="button">
-                        Cancel
-                    </a>
-                </span>
-                <%= link_to 'Delete',
+            <div class="relative">
+                <%= image_tag post_element.image %>
+                <%= link_to 'X',
                     post_post_element_path(@post, post_element),
                     data: {
                         turbo_method: :delete,
                         turbo_confirm: "Are you sure?"
                     },
-                    class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
+                    class: "absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" %>
             </div>
-    <% end %>
+        <% else %>
+            <span class="underline cursor-pointer">Click to Add Image</span>
+        <% end %>
+    </div>
+    <div>
+        <% if !post_element.image.present? %>
+            <%= form_with(model: [ @post,  post_element ]) do |form| %>
+                <%= form.file_field :image %>
+                <div class="flex gap-2 justify-between items-center">
+                    <span class="flex gap-2">
+                        <%= form.submit 'Save', data: {editpost_target: 'button'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
+                    </span>
+                    <%= link_to 'Delete',
+                            post_post_element_path(@post, post_element),
+                            data: {
+                                turbo_method: :delete,
+                            },
+                            class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
+                </div>
+            <% end %>
+        <% end %>
     </div>
 </div>
