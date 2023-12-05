@@ -1,37 +1,37 @@
-<div class="mx-auto xl:w-2/3 w-full">
+<div class="mx-auto 2xl:w-3/4 w-full">
 
   <div class="flex gap-2">
     <span>
-      <%= link_to "Back", posts_path, class: " block mb-2 rounded-lg py-3 px-5 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
+      <%= link_to "Back", posts_path, class: "block mb-2 rounded-lg py-3 px-5 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
       <!-- Form for editing the post -->
       <%= render "form", post: @post %>
     </span>
     <!-- Form for creating a PostElement -->
-    <span>
+    <span class="flex-grow">
       <%= form_with(model: [ @post, @paragraph ],  class: "mb-2") do |form| %>
         <%= form.hidden_field :element_type, value: 'paragraph' %>
         <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
       <% end %>
 
       <!--Rendering Each Post Element -->
-      <div class="mx-auto bg-white rounded-md overflow-hidden shadow-md">
+      <div class="flex-grow mx-auto bg-white rounded-md overflow-hidden shadow-md">
         <div class="p-4 pt-6">
           <% @post.post_elements.each do |element| %>
             <% if element.persisted? %>
                 <div class="mb-2" data-controller="editpost">
-                  <div class="paragraph-content" data-editpost-target="content">
+                  <div class="" data-editpost-target="content">
                     <% if element.content.persisted? %>
                       <%= element.content %>
                     <% else %>
-                      Click to Add Content
+                      <span class="underline cursor-pointer">Click to Add Content</span>
                     <% end %>
                   </div>
                   <div class="hidden" data-editpost-target="form">
                     <%= form_with(model: [ @post, element ]) do |form| %>
                       <%= form.rich_text_area :content %> <!--This ought to be turned into a turbostream eventually-->
                       <div class="flex gap-2">
-                        <%= form.submit 'Save', data: {editpost_target: 'saveButton'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
-                        <button class="block rounded-lg py-3 px-5 bg-gray-500 hover:bg-gray-600 text-white font-medium cursor-pointer my-2"> Cancel </button>
+                        <%= form.submit 'Save', data: {editpost_target: 'button'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
+                        <a class="block rounded-lg py-3 px-5 bg-gray-500 hover:bg-gray-600 text-white font-medium cursor-pointer my-2" data-editpost-target="button"> Cancel </a>
                       </div>
                     <% end %>
                   </div>
