@@ -18,7 +18,7 @@
         <div class="p-4 pt-6">
           <% @post.post_elements.each do |element| %>
             <% if element.persisted? %>
-                <div class="mb-2" data-controller="editpost">
+                <div class="mb-2 p-2" data-controller="editpost">
                   <div class="" data-editpost-target="content">
                     <% if element.content.present? %>
                       <%= element.content %>
