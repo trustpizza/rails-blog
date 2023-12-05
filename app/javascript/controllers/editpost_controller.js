@@ -6,22 +6,18 @@ export default class extends Controller {
     initialize() {
 
         this.contentTarget.addEventListener("click", () => {
-            this.toggleForm();
+            this.toggleFormAndContent()
         });
 
         this.buttonTargets.forEach(btn => {
             btn.addEventListener("click", () => {
-                this.toggleForm();
-                this.toggleContent();
+                this.toggleFormAndContent()
             });
         });
     };
 
-    toggleForm() {
-        this.formTarget.classList.toggle("hidden");
-    };
-
-    toggleContent() {
+    toggleFormAndContent() {
+        this.formTarget.classList.toggle("hidden")
         this.contentTarget.classList.toggle("hidden")
     }
 };

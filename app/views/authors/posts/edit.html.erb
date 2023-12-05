@@ -20,7 +20,7 @@
             <% if element.persisted? %>
                 <div class="mb-2" data-controller="editpost">
                   <div class="" data-editpost-target="content">
-                    <% if element.content.persisted? %>
+                    <% if element.content.present? %>
                       <%= element.content %>
                     <% else %>
                       <span class="underline cursor-pointer">Click to Add Content</span>
