@@ -8,10 +8,16 @@
     </span>
     <!-- Form for creating a PostElement -->
     <span class="flex-grow">
-      <%= form_with(model: [ @post, @paragraph ],  class: "mb-2") do |form| %>
-        <%= form.hidden_field :element_type, value: 'paragraph' %>
-        <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
-      <% end %>
+      <span class="flex gap-2">
+        <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+          <%= form.hidden_field :element_type, value: 'paragraph' %>
+          <%= form.submit 'Paragraph', class: "block rounded-lg py-3 px-5 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+        <% end %>
+        <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+          <%= form.hidden_field :element_type, value: 'image' %>
+          <%= form.submit 'Image', class: "block rounded-lg py-3 px-5 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+        <% end %>
+      </span>
 
       <!--Rendering Each Post Element -->
       <div class="flex-grow mx-auto bg-white rounded-md overflow-hidden shadow-md">
