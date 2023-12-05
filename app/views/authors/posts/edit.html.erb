@@ -14,14 +14,25 @@
       <% end %>
 
       <!--Rendering Each Post Element -->
-      <% @post.post_elements.each do |element| %>
-        <% if element.persisted? %>
-          <%= form_with(model: [ @post, element ]) do |form| %>
-            <%= form.rich_text_area :content %> <!--This ought to be turned into a turbostream eventually-->
-            <%= form.submit 'Save', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+      <div class="mx-auto bg-white rounded-md overflow-hidden shadow-md">
+        <div class="p-4 pt-6">
+          <% @post.post_elements.each do |element| %>
+            <% if element.persisted? %>
+                <div class="mb-2">
+                  <div class="paragraph-content">
+                    <%= element.content %>
+                  </div>
+                  <div class="paragraph-form">
+                    <%= form_with(model: [ @post, element ]) do |form| %>
+                      <%= form.rich_text_area :content %> <!--This ought to be turned into a turbostream eventually-->
+                      <%= form.submit 'Save', class: "block rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer my-2" %>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
           <% end %>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
 
     </span>
   </div>
