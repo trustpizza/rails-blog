@@ -1,13 +1,13 @@
-<div class="mx-auto 2xl:w-3/4 w-full">
+<div class="mx-auto 4xl:w-3/4 w-full">
 
-  <div class="flex gap-2">
-    <span>
+  <div class="flex flex-col md:grid md:grid-cols-4 gap-2">
+    <span class="md:col-span-1">
       <%= link_to "Back", posts_path, class: "block mb-2 rounded-lg py-3 px-5 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
       <!-- Form for editing the post -->
       <%= render "form", post: @post %>
     </span>
     <!-- Form for creating a PostElement -->
-    <span class="flex-grow">
+    <span class="flex-grow md:col-span-3">
       <span class="flex gap-2">
         <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
           <%= form.hidden_field :element_type, value: 'paragraph' %>

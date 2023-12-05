@@ -21,6 +21,15 @@
     <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-black outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+  <div class="my-5">
+    <%= form.label :header_image, class: "block text-xl font-medium text-gray-700" %>
+    <%= form.file_field :header_image %>
+    <% if post.header_image.present? %>
+      <%= image_tag post.header_image, class: "max-w-full" %>
+    <% else %>
+    <% end %>
+  </div>
+
   <div class="">
     <%= form.submit class: "w-full block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
   </div>
