@@ -15,7 +15,13 @@
                         <a class="block rounded-lg py-3 px-5 bg-gray-500 hover:bg-gray-600 text-white font-medium cursor-pointer my-2" data-editpost-target="button"> Cancel </a>
                     </div>
                     <span>
-                        <%= link_to 'Delete', post_post_element_path(@post, post_element), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
+                        <%= link_to 'Delete',
+                            post_post_element_path(@post, post_element),
+                            data: {
+                                turbo_method: :delete,
+                                turbo_confirm: "Are you sure?"
+                            },
+                            class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
                     </span>
                 </div>
         <% end %>

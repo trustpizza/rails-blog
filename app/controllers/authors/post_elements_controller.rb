@@ -34,7 +34,7 @@ module Authors
       @post_element.destroy!
       
       respond_to do |format|
-        format.html { redirect_to post_elements_url, notice: "Post element was successfully destroyed." }
+        format.html { redirect_to edit_post_path(@post), notice: "Post element was successfully destroyed." }
       end
     end
 

@@ -16,7 +16,13 @@
                         Cancel
                     </a>
                 </span>
-                <%= link_to 'Delete', post_post_element_path(@post, post_element), method: :delete, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
+                <%= link_to 'Delete',
+                    post_post_element_path(@post, post_element),
+                    data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    },
+                    class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
             </div>
     <% end %>
     </div>
