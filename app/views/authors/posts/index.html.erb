@@ -6,20 +6,20 @@
 <% @posts.each do |post| %>
   <%= link_to edit_post_path(post) do %>
     <div class="mb-3">
-      <div class="md:grid md:grid-cols-6 md:gap-2 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <div class="md:grid md:grid-cols-6 md:gap-2 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100>
         <span class="col-span-1">
           <% if post.header_image.persisted? %>
             <div class="bg-cover bg-center max-w-32 max-h-32 overflow-hidden flex justify-center items-center">
               <%= image_tag post.header_image %>
-            </div>
+              </div>
           <% end %>
         </span>
 
         <span class="col-span-4">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             <%=post.title%>
             </h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">
+          <p class="font-normal text-gray-700 ">
             <%=post.description%>
           </p>
         </span>
