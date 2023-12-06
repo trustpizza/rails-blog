@@ -50,6 +50,18 @@ module Authors
       end
     end
 
+    def publish
+      @post = Post.find(params[:id])
+      @post.update(published: true)
+      render turbo_stream: turbo_stream.replace(@post, partial: 'posts/edit', locals: { post: @post })
+    end
+    
+    def unpublish
+      @post = Post.find(params[:id])
+      @post.update(published: false)
+      render turbo_stream: turbo_stream.replace(@post, partial: 'posts/edit', locals: { post: @post })
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post

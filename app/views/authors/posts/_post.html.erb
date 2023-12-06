@@ -1,31 +1,47 @@
-<div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= post.title %>
-  </p>
+<%= turbo_frame_tag 'post' do %>
+  <div class="mx-auto 4xl:w-3/4 w-full">
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= post.description %>
-  </p>
+    <div class="flex flex-col md:grid md:grid-cols-3 gap-2">
+      <span class="md:col-span-1">
+        <%= link_to "Back", posts_path, class: "block mb-1 rounded-sm py-2 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium" %>
+        <!-- Form for editing the post -->
+        <div>
+          <%= render "form", post: @post %>
+          <% if @post.published? %>
+            <a href="" class="block mx-1 text-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-sm">Unpublish</a>
+          <% else %>
+            <a href="" class="block mx-1 text-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-sm">Publish</a>
+          <% end %>
+        </div>
+      </span>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Published:</strong>
-    <%= post.published %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Published at:</strong>
-    <%= post.published_at %>
-  </p>
+      <!-- Form for creating a PostElement -->
+      <span class="flex-grow md:col-span-2">
+        <span class="flex gap-2">
+          <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+            <%= form.hidden_field :element_type, value: 'paragraph' %>
+            <%= form.submit 'Paragraph', class: "block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+          <% end %>
+          <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+            <%= form.hidden_field :element_type, value: 'image' %>
+            <%= form.submit 'Image', class: "block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+          <% end %>
+        </span>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Author:</strong>
-    <%= post.author_id %>
-  </p>
+        <!--Rendering Each Post Element -->
+        <div class="flex-grow mx-auto bg-white rounded-sm overflow-hidden shadow-md">
+          <div class="p-4 pt-6">
+            <% @post.post_elements.each do |element| %>
+              <% if element.persisted? %>
+                <%= render partial: 'authors/post_elements/post_element', locals: { post_element: element } %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
 
-  <% if action_name != "show" %>
-    <%= link_to "Edit this post", edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+      </span>
+    </div>
+
+  </div>
+<% end %>
