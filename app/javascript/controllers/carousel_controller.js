@@ -12,7 +12,7 @@ export default class extends Controller {
     this.maximum = this.slideTargets.length // Max number before reset
     this.index = 0  
     this.swiperSeconds = 2.5 // Default val for timer to wait before swipes (seconds)
-    // this.createTimer()
+    this.createTimer()
   }
 
   createTimer() {

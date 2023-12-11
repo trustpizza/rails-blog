@@ -29,11 +29,13 @@
         <span class="flex gap-2">
           <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
             <%= form.hidden_field :element_type, value: 'paragraph' %>
-            <%= form.submit 'Paragraph', class: "block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+            <%= form.submit '¶', class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
           <% end %>
           <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
             <%= form.hidden_field :element_type, value: 'image' %>
-            <%= form.submit 'Image', class: "block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+            <%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer") do %>  
+              <%= image_tag 'picture_icon' %>
+            <% end %>
           <% end %>
         </span>
 

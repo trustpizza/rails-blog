@@ -7,7 +7,7 @@
 
     <div class="grow text-center overflow-hidden flex items-center justify-center p-2 md:px-40">
         <div class="h-full overflow-x-auto overflow-y-hidden grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel" > <!-- Slider Container -->
-            <% #imagess
+            <% #images
                 images = [
                     {
                         title: "thewhites",
@@ -18,21 +18,33 @@
                         alt: "Killington, Vermont"
                     },
                     {
-                        title: "snack-on-mountain-lake",
-                        alt: "A Snack on top of a lake overlooking a mountain"
-                    },
-                    {
                         title: "axel-and-arlo",
                         alt: "A man and his dog with a mountain sunset behind"
+                    },
+                    {
+                        title: "briana_and_arlo_on_rock_2023",
+                        alt: "Briana and Dog on the Rock"
+                    },
+                    {
+                        title: "cabin_cuddle_winter_2023",
+                        alt: "Briana and Axel in the New House Winter 2023"
+                    },
+                    {
+                        title: "muse_5k_2023",
+                        alt: "Post 5k Smiles"
+                    },
+                    {
+                        title: "winter_dam_2023",
+                        alt: "Smiling together on the dam, Winter of 2023"
                     }
                 ]
             %>
             <%images.each_with_index do |img, idx| %>
-                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform flex items-center relative bg-red-200 border-2 overflow-hidden">
+                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform flex items-center relative overflow-hidden">
                         <div class="relative overflow-hidden h-full">
                             <%= image_tag img[:title],
                                 alt: img[:alt],
-                                class: "object-cover lg:object-none w-full h-full",
+                                class: "object-cover lg:object-none w-fit h-fit",
                                 id: "slide_" + idx.to_s
                             %>
                         </div>
