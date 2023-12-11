@@ -5,7 +5,7 @@
         </div>
     </header>
 
-    <div class="grow text-center overflow-hidden flex items-center justify-center p-2 md:px-40">
+    <div class="grow text-center overflow-hidden flex items-center justify-center p-2 md:px-40 lg:mx-40">
         <div class="h-full overflow-x-auto overflow-y-hidden grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel" > <!-- Slider Container -->
             <% #images
                 images = [
@@ -40,11 +40,11 @@
                 ]
             %>
             <%images.each_with_index do |img, idx| %>
-                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform flex items-center relative overflow-hidden">
+                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform items-center relative overflow-hidden w-full h-full bg-cover bg-center rounded-lg">
                         <div class="relative overflow-hidden h-full">
                             <%= image_tag img[:title],
                                 alt: img[:alt],
-                                class: "object-cover lg:object-none w-fit h-fit",
+                                class: "object-cover object-center w-full h-full",
                                 id: "slide_" + idx.to_s
                             %>
                         </div>
