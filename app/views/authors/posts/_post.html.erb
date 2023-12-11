@@ -50,13 +50,13 @@
             </div>
           <% end %>
 
-          <div class="p-4 pt-6">
+          <ul class="p-4 pt-6" data-controller="drag">
             <% @post.post_elements.each do |element| %>
               <% if element.persisted? %>
                 <%= render partial: 'authors/post_elements/post_element', locals: { post_element: element } %>
               <% end %>
             <% end %>
-          </div>
+          </ul>
         </div>
 
       </span>

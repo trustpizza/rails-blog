@@ -1,6 +1,8 @@
 class PostElement < ApplicationRecord
   belongs_to :post
 
+  acts_as_list
+
   validates :element_type, inclusion: { in: [ 'paragraph', 'image', 'video-embed' ]}
 
   has_rich_text :content
