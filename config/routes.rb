@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   scope module: 'authors' do
     resources :posts do 
       resources :post_elements
+      member do 
+        get 'publish'
+        get 'unpublish'
+      end
     end
   end
 end

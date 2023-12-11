@@ -52,14 +52,26 @@ module Authors
 
     def publish
       @post = Post.find(params[:id])
-      @post.update(published: true)
-      render turbo_stream: turbo_stream.replace(@post, partial: 'posts/edit', locals: { post: @post })
+      respond_to do |format|
+        if @post.update(published: true)
+          format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
+        else
+          notice = @post.errors.full_messages.join(". ") << "."
+          format.html { redirect_to edit_post_path(@post), notice: notice}
+        end
+      end
     end
     
     def unpublish
       @post = Post.find(params[:id])
-      @post.update(published: false)
-      render turbo_stream: turbo_stream.replace(@post, partial: 'posts/edit', locals: { post: @post })
+      respond_to do |format|
+        if @post.update(published: false)
+          format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
+        else
+          notice = @post.errors.full_messages.join(". ") << "."
+          format.html { redirect_to edit_post_path(@post), notice: notice}
+        end
+      end
     end
 
     private
