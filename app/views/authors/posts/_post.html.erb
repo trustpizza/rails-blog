@@ -3,7 +3,7 @@
 
     <div class="flex flex-col md:grid md:grid-cols-3 gap-2">
       <span class="md:col-span-1">
-        <%= link_to "Back", posts_path, class: "block mb-1 rounded-sm py-2 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium", data: {turbo: false} %>
+        <%= link_to "Back", posts_path, class: "block mb-1 rounded-sm py-2 md:mt-3 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium", data: {turbo: false} %>
         <!-- Form for editing the post -->
         <div>
           <%= render "form", post: @post %>
@@ -25,27 +25,29 @@
 
 
       <!-- Form for creating a PostElement -->
-      <span class="flex-grow md:col-span-2">
-        <span class="flex gap-2">
+      <span class="mx-1 md:mx-px flex-grow md:col-span-2">
+        <span class="flex items-center gap-2">
           <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
             <%= form.hidden_field :element_type, value: 'paragraph' %>
-            <%= form.submit '¶', class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer" %>
+            <%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-small cursor-pointer") do %>
+              <i class="fa-solid fa-paragraph"></i> 
+            <% end %>
           <% end %>
           <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
             <%= form.hidden_field :element_type, value: 'image' %>
             <%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer") do %>  
-              <%= image_tag 'picture_icon' %>
+                <i class="fa-solid fa-camera-alt"></i>
             <% end %>
           <% end %>
         </span>
 
         <!--Rendering Each Post Element -->
         <div class="flex-grow mx-auto bg-white rounded-sm overflow-hidden shadow-md">
+          
           <% if @post.published? %>
-            <span class="inline-block bg-blue-500 text-white px-2 py-1 text-sm font-semibold rounded-md m-2">
-              Published
-            </span>
-            Published <%= time_ago_in_words(@post.published_at) %> ago.
+            <div class="bg-gray-200 p-4 border-b border-gray-300 text-right">
+              Published <%= time_ago_in_words(@post.published_at) %> ago.
+            </div>
           <% end %>
 
           <div class="p-4 pt-6">
