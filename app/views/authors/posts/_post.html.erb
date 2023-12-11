@@ -39,6 +39,13 @@
 
         <!--Rendering Each Post Element -->
         <div class="flex-grow mx-auto bg-white rounded-sm overflow-hidden shadow-md">
+          <% if @post.published? %>
+            <span class="inline-block bg-blue-500 text-white px-2 py-1 text-sm font-semibold rounded-md m-2">
+              Published
+            </span>
+            Published <%= time_ago_in_words(@post.published_at) %> ago.
+          <% end %>
+
           <div class="p-4 pt-6">
             <% @post.post_elements.each do |element| %>
               <% if element.persisted? %>

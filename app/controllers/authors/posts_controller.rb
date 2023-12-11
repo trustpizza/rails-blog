@@ -53,7 +53,7 @@ module Authors
     def publish
       @post = Post.find(params[:id])
       respond_to do |format|
-        if @post.update(published: true)
+        if @post.update(published: true, published_at: Time.now)
           format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
         else
           notice = @post.errors.full_messages.join(". ") << "."
@@ -65,7 +65,7 @@ module Authors
     def unpublish
       @post = Post.find(params[:id])
       respond_to do |format|
-        if @post.update(published: false)
+        if @post.update(published: false,  published_at: nil)
           format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
         else
           notice = @post.errors.full_messages.join(". ") << "."
