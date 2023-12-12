@@ -1,4 +1,4 @@
-<li class="mb-2 p-2 mx-auto bg-white rounded-md overflow-hidden shadow-lg hover:bg-slate-100 transition duration-100 cursor-pointer" data-controller="editpost">
+<li data-id="<%=post_element.id%>" class="mb-2 p-2 mx-auto bg-white rounded-md overflow-hidden shadow-lg hover:bg-slate-100 transition duration-100 cursor-pointer" data-controller="editpost">
     <div class="leading-6" data-editpost-target="content">
         <% if  post_element.content.present? %>
             <%=  post_element.content %>

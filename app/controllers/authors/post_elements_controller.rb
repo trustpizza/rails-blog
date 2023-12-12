@@ -1,7 +1,7 @@
 module Authors
   class PostElementsController < AuthorsController
     before_action :set_post 
-    before_action :set_post_element, only: %i[ update destroy ]
+    before_action :set_post_element, only: %i[ update destroy move ]
 
     # POST /post_elements or /post_elements.json
     def create
@@ -38,6 +38,11 @@ module Authors
       end
     end
 
+    # PATCH
+    def move
+      @post_element.insert_at(params[:position].to_i)
+    end
+
     private
       # sets posts
       def set_post
@@ -51,7 +56,7 @@ module Authors
 
       # Only allow a list of trusted parameters through.
       def post_element_params 
-        params.require(:post_element).permit(:element_type, :content, :image)
+        params.require(:post_element).permit(:element_type, :content, :image, :position)
       end
   end
 end

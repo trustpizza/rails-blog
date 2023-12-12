@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     resources :posts do 
       resources :post_elements
       member do 
-        get 'publish'
-        get 'unpublish'
+        get :publish
+        get :unpublish
+        patch :move
       end
     end
   end
