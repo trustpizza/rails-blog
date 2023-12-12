@@ -50,7 +50,7 @@
             </div>
           <% end %>
 
-          <ul class="p-4 pt-6" data-controller="drag" data-drag-url="/posts/post_elements/:id/move">
+          <ul class="p-4 pt-6" data-controller="drag" post-id = "<%=@post.id%>" data-drag-url="/posts/1/post_elements/:id/move">
             <% @post.post_elements.each do |element| %>
               <% if element.persisted? %>
                 <%= render partial: 'authors/post_elements/post_element', locals: { post_element: element } %>

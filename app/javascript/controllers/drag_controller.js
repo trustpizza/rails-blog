@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import Rails from '@rails/ujs';
 import Sortable from "sortablejs"
 
 export default class extends Controller {
@@ -10,17 +11,13 @@ export default class extends Controller {
 
   end(event) {
     let id = event.item.dataset.id
-    let data = new FormData();
-    let url = this.data.get("url").replace(":id", id)
+    let data = new FormData()
     data.append("position", event.newIndex + 1)
 
-    const parent = this.element
-    const post_element_items = Array.from(parent.children)
-
-    const post_elements = post_element_items.map((ele, idx) => {
-      return { id: ele.dataset.id, position: idx + 1}
+    Rails.ajax({
+      url: this.data.get("url").replace(":id", id).replace(":post_id", "1"),
+      type: 'PATCH',
+      data: data
     })
-    
-    element.dataset.elements = JSON.stringify(post_elements)
   }
 }

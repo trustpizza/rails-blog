@@ -40,7 +40,8 @@ module Authors
 
     # PATCH
     def move
-      @post_element.insert_at(params[:position].to_i)
+      @todo.insert_at(params[:position].to_i)
+      head :ok
     end
 
     private
