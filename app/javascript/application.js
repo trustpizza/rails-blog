@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+
+Trix.config.blockAttributes.heading1.tagName = "h3" // Turn h1 to h3 tags
