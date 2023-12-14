@@ -1,35 +1,41 @@
-<% @posts.each do |post| %>
-  <%= link_to "" do %>
-    <div class="mb-3">
-      <div class="md:flex-row md:gap-4 items-center flex flex-col p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100>
-        <span class="col-span-1">
-          <% if post.header_image.persisted? %>
-            <div class="mb-4 md:mb-0 md:mr-4 rounded bg-cover bg-center max-w-sm lg:w-3/5 h-48 overflow-hidden flex justify-center items-center">
-              <%= image_tag post.header_image %>
-              </div>
-          <% end %>
-        </span>
+<div class="mx-8 my-12">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">Posts</h1>
 
-        <span class="col-span-4">
-          <% if post.published? %>
-            <span class="inline-block bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded-full mb-3">
-              Published
-            </span>
-          <% else %>
-            <span class="inline-block bg-slate-500 text-white text-sm font-semibold px-2 py-1 rounded-full mb-3">
-              Unpublished
-            </span>
-          <% end %>
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            <%=post.title%>
-            </h5>
-          <p class="font-normal text-gray-700 ">
-            <%=post.description%>
-          </p>
-        </span>
+    <div class="flex justify-center content-center">
+        <% @posts.each do |post| %>
+          <%= link_to "" do %>
+            <div class="mb-3">
+              <div class="md:flex-row md:gap-4 items-center flex flex-col p-6 bg-white hover:bg-gray-100 border border-gray-200 rounded-lg shadow hover:bg-gray-100>
+                <span class="col-span-1">
+                  <% if post.header_image.persisted? %>
+                    <div class="mb-4 md:mb-0 md:mr-4 rounded bg-cover bg-center max-w-sm lg:w-3/5 h-48 overflow-hidden flex justify-center items-center">
+                      <%= image_tag post.header_image %>
+                      </div>
+                  <% end %>
+                </span>
         
-
-      </div>
+                <span class="col-span-4">
+                  <% if post.published? %>
+                    <span class="inline-block bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded-full mb-3">
+                      Published
+                    </span>
+                  <% else %>
+                    <span class="inline-block bg-slate-500 text-white text-sm font-semibold px-2 py-1 rounded-full mb-3">
+                      Unpublished
+                    </span>
+                  <% end %>
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                    <%=post.title%>
+                    </h5>
+                  <p class="font-normal text-gray-700 ">
+                    <%=post.description%>
+                  </p>
+                </span>
+        
+        
+              </div>
+            </div>
+          <% end %>
+        <% end %>
     </div>
-  <% end %>
-<% end %>
+</div>

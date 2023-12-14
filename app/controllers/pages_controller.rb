@@ -3,6 +3,6 @@ class PagesController < ApplicationController
     end
 
     def entries
-        # @posts = Post.all
+        @posts = Post.published.most_recently_published
     end
 end
