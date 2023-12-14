@@ -1,7 +1,7 @@
 module Authors
   class PostElementsController < AuthorsController
-    before_action :set_post 
-    before_action :set_post_element, only: %i[ update destroy move ]
+    before_action :set_post
+    before_action :set_post_element, only: %i[ update destroy move]
 
     # POST /post_elements or /post_elements.json
     def create
@@ -38,9 +38,16 @@ module Authors
       end
     end
 
-    # PATCH
     def move
-      @todo.insert_at(params[:position].to_i)
+      @post_element
+      puts("\n\n\n\n\n\n\n\n")
+      puts(@post_element.position)
+      @post_element.insert_at(params[:position].to_i)
+      puts(@post_element.position)
+      puts("\n\n\n\n\n\n\n\n")
+      # puts(@post_element.position)
+      # puts(params[:position].to_i)
+      # @post_element.insert_at(params[:position].to_i)
       head :ok
     end
 
@@ -52,7 +59,7 @@ module Authors
 
       # Use callbacks to share common setup or constraints between actions.
       def set_post_element
-        @post_element = @post.post_elements.find(params[:id])
+        @post_element = @post.post_elements.find(params[:id].to_i)
       end
 
       # Only allow a list of trusted parameters through.

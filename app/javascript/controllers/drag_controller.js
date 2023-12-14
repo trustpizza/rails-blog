@@ -9,13 +9,29 @@ export default class extends Controller {
     })
   }
 
+  sort () {
+    // const drag_element = this.element
+    // const child_elements = 
+  }
+
   end(event) {
     let id = event.item.dataset.id
+    let postId = event.item.dataset.postId
+
     let data = new FormData()
     data.append("position", event.newIndex + 1)
 
+    let url = this.data.get("url")
+    let mappedUrl = { "id": id, ":":""}
+
+    url = url.replace(/post_id|id/gi, function(matched){
+      return mappedUrl[matched];
+    })
+
+    url = url.replaceAll(":","")
+
     Rails.ajax({
-      url: this.data.get("url").replace(":id", id).replace(":post_id", "1"),
+      url: url,
       type: 'PATCH',
       data: data
     })

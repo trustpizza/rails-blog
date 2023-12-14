@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   # root "posts#index"
   scope module: 'authors' do
     resources :posts do 
-      resources :post_elements
+      resources :post_elements do
+          patch :move, on: :member
+      end
       member do 
         get :publish
         get :unpublish
-        patch :move
       end
     end
   end

@@ -1,7 +1,7 @@
 class PostElement < ApplicationRecord
   belongs_to :post
 
-  acts_as_list
+  acts_as_list scope: :post
 
   validates :element_type, inclusion: { in: [ 'paragraph', 'image', 'video-embed' ]}
 
