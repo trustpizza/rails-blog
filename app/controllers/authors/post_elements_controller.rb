@@ -39,15 +39,7 @@ module Authors
     end
 
     def move
-      @post_element
-      puts("\n\n\n\n\n\n\n\n")
-      puts(@post_element.position)
       @post_element.insert_at(params[:position].to_i)
-      puts(@post_element.position)
-      puts("\n\n\n\n\n\n\n\n")
-      # puts(@post_element.position)
-      # puts(params[:position].to_i)
-      # @post_element.insert_at(params[:position].to_i)
       head :ok
     end
 
