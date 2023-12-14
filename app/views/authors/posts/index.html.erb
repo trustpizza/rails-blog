@@ -1,4 +1,4 @@
-<div class="flex justify-between items-center mb-4">
+<div class="flex justify-between items-center mb-4 mx-4">
   <h1 class="font-bold text-4xl">Posts</h1>
   <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white block font-medium" %>
 </div>
@@ -6,16 +6,25 @@
 <% @posts.each do |post| %>
   <%= link_to edit_post_path(post) do %>
     <div class="mb-3">
-      <div class="md:grid md:grid-cols-6 md:gap-2 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100>
+      <div class="md:flex-row md:gap-4 items-center flex flex-col p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100>
         <span class="col-span-1">
           <% if post.header_image.persisted? %>
-            <div class="bg-cover bg-center max-w-32 max-h-32 overflow-hidden flex justify-center items-center">
+            <div class="mb-4 md:mb-0 md:mr-4 rounded bg-cover bg-center max-w-sm lg:w-3/5 h-48 overflow-hidden flex justify-center items-center">
               <%= image_tag post.header_image %>
               </div>
           <% end %>
         </span>
 
         <span class="col-span-4">
+          <% if post.published? %>
+            <span class="inline-block bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded-full">
+              Published
+            </span>
+          <% else %>
+            <span class="inline-block bg-slate-500 text-white text-sm font-semibold px-2 py-1 rounded-full">
+              Unpublished
+            </span>
+          <% end %>
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             <%=post.title%>
             </h5>
