@@ -1,9 +1,9 @@
 <%= form_with(model: post, class: "bg-white border shadow-md rounded-sm pb-8 mb-4 overflow-hidden") do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div id="error_explanation" class="m-4 bg-red-50 text-red-500 px-4 py-2 font-medium rounded-lg mt-3 mb-6">
+      <h2 class="font-bold text-lg"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
+      <ul class="list-disc mt-1 px-4">
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
