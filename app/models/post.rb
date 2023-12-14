@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   # Friendly IDs to look better than posts/1
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :history, :finders]
 
   belongs_to :author
 
@@ -10,4 +10,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: {minimum: 10}
   validates :description, presence: true, length: { in: 50..250 }
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 end
