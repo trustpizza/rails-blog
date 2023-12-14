@@ -1,5 +1,5 @@
 <div class="flex justify-between items-center mb-4 mx-4">
-  <h1 class="font-bold text-4xl">Posts</h1>
+  <h1 class="font-bold text-4xl">posts</h1>
   <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white block font-medium" %>
 </div>
 
@@ -17,11 +17,11 @@
 
         <span class="col-span-4">
           <% if post.published? %>
-            <span class="inline-block bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded-full">
+            <span class="inline-block bg-blue-500 text-white text-sm font-semibold px-2 py-1 rounded-full mb-3">
               Published
             </span>
           <% else %>
-            <span class="inline-block bg-slate-500 text-white text-sm font-semibold px-2 py-1 rounded-full">
+            <span class="inline-block bg-slate-500 text-white text-sm font-semibold px-2 py-1 rounded-full mb-3">
               Unpublished
             </span>
           <% end %>
