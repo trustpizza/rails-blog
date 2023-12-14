@@ -72,3 +72,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "acts_as_list", "~> 1.1"
+
+gem 'friendly_id', '~> 5.4.0'

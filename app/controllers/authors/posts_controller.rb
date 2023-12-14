@@ -1,6 +1,6 @@
 module Authors
   class PostsController < AuthorsController
-    before_action :set_post, only: %i[ edit update destroy ]
+    before_action :set_post, only: %i[ edit update destroy publish unpublish]
 
     # GET /posts or /posts.json
     def index
@@ -51,7 +51,6 @@ module Authors
     end
 
     def publish
-      @post = Post.find(params[:id])
       respond_to do |format|
         if @post.update(published: true, published_at: Time.now)
           format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
@@ -63,7 +62,6 @@ module Authors
     end
     
     def unpublish
-      @post = Post.find(params[:id])
       respond_to do |format|
         if @post.update(published: false,  published_at: nil)
           format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
@@ -77,7 +75,7 @@ module Authors
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = current_author.posts.find(params[:id])
+        @post = current_author.posts.friendly.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.

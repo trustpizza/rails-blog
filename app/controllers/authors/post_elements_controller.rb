@@ -46,7 +46,7 @@ module Authors
     private
       # sets posts
       def set_post
-        @post = current_author.posts.find(params[:post_id])
+        @post = current_author.posts.friendly.find(params[:post_id])
       end
 
       # Use callbacks to share common setup or constraints between actions.
