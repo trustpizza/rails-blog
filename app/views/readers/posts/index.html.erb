@@ -5,7 +5,7 @@
   </div>
   
   <% @posts.each do |post| %>
-    <%= link_to post_path(post) do %>
+    <%= link_to blog_post_path(post) do %>
       <div class="mb-3">
         <div class="md:flex-row md:gap-4 items-center flex flex-col p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
           <span class="col-span-1">
