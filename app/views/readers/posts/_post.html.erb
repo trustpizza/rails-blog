@@ -1,26 +1,13 @@
 <%= turbo_frame_tag 'post' do %>
-  <div class="mx-auto 4xl:w-3/4 w-full">
-
-    <div class="flex flex-col justify-center md:grid md:grid-cols-3 gap-2">
-      <span class="md:col-span-1">
-        <%= link_to "Back", blog_path, class: "block mb-1 rounded-sm py-2 md:mt-3 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium", data: {turbo: false} %>
-        <!-- Form for editing the post -->
-
-
-        <!--Rendering Each Post Element -->
-
-        <div class="bg-white p-8 rounded-md shadow-md">
-  <!-- Display the post title prominently -->
-        <h1 class="text-3xl font-bold mb-4">
-            <%= @post.title %>
-        </h1>
-
-        <!-- Display post elements (images or paragraphs) -->
-        <% @post.post_elements.each do |post_element| %>
-            <%= render 'post_element', post_element: post_element %>
-        <% end %>
-        </div>
-      </span>
+  <div class="pt-4">
+    <div class="rounded overflow-hidden shadow-md bg-white">
+      <%= image_tag @post.header_image, class: "w-full h-64 rounded-t object-cover" %>
+    <div class="font-bold text-xl mb-2">
+      <%= @post.title %>
+    </div>
+      <div class="p-6 flex flex-col">
+        <!-- Content goes here -->
+      </div>
     </div>
   </div>
 <% end %>
