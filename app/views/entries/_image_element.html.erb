@@ -1,0 +1,36 @@
+<li data-id="<%=post_element.id%>" class=" max-w-lg mb-2 p-1 mx-auto bg-white shadow-lg hover:bg-slate-100 transition duration-100 cursor-pointer">
+    <div class="leading-6 mb-2">
+        <% if post_element.image.present? %>
+            <div class="relative">
+                <%= image_tag post_element.image %>
+                <%= link_to 'X',
+                    post_post_element_path(@post, post_element),
+                    data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    },
+                    class: "absolute top-4 right-4 transform opacity-50 hover:opacity-100 bg-slate-500 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded-md" %>
+            </div>
+        <% else %>
+            <span class="underline cursor-pointer">Click to Add Image</span>
+        <% end %>
+    </div>
+    <div>
+        <% if !post_element.image.present? %>
+            <%= form_with(model: [ @post,  post_element ]) do |form| %>
+                <%= form.file_field :image %>
+                <div class="flex gap-2 justify-between items-center">
+                    <span class="flex gap-2">
+                        <%= form.submit 'Save', data: {editpost_target: 'button'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
+                    </span>
+                    <%= link_to 'Delete',
+                            post_post_element_path(@post, post_element),
+                            data: {
+                                turbo_method: :delete,
+                            },
+                            class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</li>
