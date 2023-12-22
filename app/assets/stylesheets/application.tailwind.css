@@ -1,15 +1,13 @@
+@import 'actiontext.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'actiontext.css';
-
 
 @layer base {
-
-}
-
-@layer components {
-    
+    pre {
+        @apply bg-sky-400 !important;
+    }
 }
 
 @font-face {
