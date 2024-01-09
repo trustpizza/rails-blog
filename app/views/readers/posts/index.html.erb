@@ -3,31 +3,25 @@
     <%= link_to "Back", root_path, class: "block mb-1 rounded-sm py-2 md:mt-3 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium", data: {turbo: false} %>
     <h1 class="mr-auto ml-auto font-bold text-4xl">Posts</h1>
   </div>
-  
-  <% @posts.each do |post| %>
-    <%= link_to blog_post_path(post) do %>
-      <div class="mb-3">
-        <div class="md:flex-row md:gap-4 items-center flex flex-col p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-          <span class="col-span-1">
-            <% if post.header_image.persisted? %>
-              <div class="mb-4 md:mb-0 md:mr-4 rounded bg-cover bg-center max-w-sm lg:w-3/5 h-48 overflow-hidden flex justify-center items-center">
-                <%= image_tag post.header_image %>
-                </div>
-            <% end %>
-          </span>
-  
-          <span class="col-span-4">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              <%=post.title%>
+  <div class="grid grid-cols-3 gap-4">
+    <% @posts.each do |post| %>
+      <%= link_to blog_post_path(post) do %>
+        <div class="flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+          <% if post.header_image.persisted? %>
+            <div class="aspect-w-4 aspect-h-3">
+              <%= image_tag post.header_image, class: 'object-cover' %>
+            </div>
+            <span class="px-6 py-2 grow flex flex-col">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                <%=post.title%>
               </h5>
-            <p class="font-normal text-gray-700 ">
-              <%=post.description%>
-            </p>
-          </span>
-  
-  
+              <p class="font-normal text-gray-700 ">
+                <%=post.description%>
+              </p>
+            </span>
+          <% end %>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
