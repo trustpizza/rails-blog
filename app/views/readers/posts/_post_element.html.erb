@@ -1,7 +1,7 @@
 <% if  post_element.paragraph? %>
     <%= render 'paragraph_element', post_element: post_element%>
 <% elsif  post_element.image? %>
-    <%#= render 'image_element', post_element: post_element %>
+    <%= render 'image_element', post_element: post_element %>
 <% elsif  post_element.video? %>
     <%= render 'video_element', post_element: post_element %>
 <% end %>
