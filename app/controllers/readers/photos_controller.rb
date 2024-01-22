@@ -1,5 +1,5 @@
 module Readers 
-  class PhotosController < ApplicationController
+  class PhotosController < ReadersController
     def index
       
     end
