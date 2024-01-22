@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  get 'photos/index'
   devise_for :authors
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "readers/home#index"
   get "/blog/:id", to: "readers/posts#show", as: :blog_post
   get "blog", to: "readers/posts#index"
+  
+  scope module: 'readers' do
+    resources :photos, only: %i[index]
+  end
   
   # scope modele: 'readers' do
   # end
