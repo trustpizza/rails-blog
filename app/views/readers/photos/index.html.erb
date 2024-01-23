@@ -1,5 +1,5 @@
-<div data-controller='photoTile'>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
   <% @photos.each do |photo| %>
-    <%= image_tag photo, data: {photoTile_target: 'tile'} %>
+    <%= image_tag photo, class: 'h-auto max-w-full rounded-lg' %>
   <% end %>
 </div>
