@@ -1,8 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
- initialize() {
-    console.log(this)
- }
+   static targets = ['tile']
+   initialize() {
+      console.log(this.tileTargets)
+   }
 }
   

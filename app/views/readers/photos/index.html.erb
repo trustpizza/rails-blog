@@ -1,9 +1,7 @@
 <div data-controller='photoTile'>
-
-</div>
-
-<div>
   <% @photos.each do |photo| %>
-    <%= image_tag photo %>
+    <div data-photoTile-target='tile'> 
+      <%= image_tag photo %>
+    </div> 
   <% end %>
 </div>
