@@ -1,20 +1,9 @@
 module Readers 
   class PhotosController < ReadersController
     def index
-      @photos = get_photos(Post.all)
-      puts @photos
+      @posts = Post.all.sample(12)
     end
 
     private
-
-    def get_photos(posts)
-      photos = []
-
-      posts.each do |post|
-        photos << post.header_image
-      end
-      
-      photos
-    end
   end
 end

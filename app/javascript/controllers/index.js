@@ -12,6 +12,3 @@ application.register("drag", DragController)
 
 import EditpostController from "./editpost_controller"
 application.register("editpost", EditpostController)
-
-import PhotoTileController from "./photo_tile_controller"
-application.register("photoTile", PhotoTileController)
