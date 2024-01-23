@@ -9,10 +9,6 @@ export default class extends Controller {
     })
   }
 
-  sort () {
-    // const drag_element = this.element
-    // const child_elements = 
-  }
 
   end(event) {
     let id = event.item.dataset.id

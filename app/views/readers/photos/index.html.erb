@@ -1,7 +1,5 @@
 <div data-controller='photoTile'>
   <% @photos.each do |photo| %>
-    <div data-photoTile-target='tile'> 
-      <%= image_tag photo %>
-    </div> 
+    <%= image_tag photo, data: {photoTile_target: 'tile'} %>
   <% end %>
 </div>
