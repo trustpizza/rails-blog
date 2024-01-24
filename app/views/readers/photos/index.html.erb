@@ -1,10 +1,10 @@
 <div class="p-4">
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  <div class="max-h-full grid grid-cols-2 md:grid-cols-4 gap-4">
     <% @posts.each_slice(3) do |group| %>
       <div class="grid gap-4">
         <% group.each do |post| %>
-          <%= link_to blog_post_path(post), class: 'relative group' do %>
-            <%= image_tag post.header_image, class: 'h-auto max-w-full rounded-lg group-hover:opacity-60 group-hover:grayscale' %>
+          <%= link_to blog_post_path(post), class: 'relative group flex' do %>
+            <%= image_tag post.header_image, class: 'h-auto max-w-full flex-grow rounded-lg group-hover:opacity-60 group-hover:grayscale' %>
             <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
               <p class="rounded w-3/4 text-center overflow-ellipsis text-black text-2xl font-extrabold group-hover:opacity- bg-white">
                 <%=post.title%>
