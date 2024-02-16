@@ -1,0 +1,2 @@
+class SignUpLink < ApplicationRecord
+end
