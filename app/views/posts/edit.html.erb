@@ -1,0 +1,15 @@
+<div class="container mx-auto mt-6">
+    <div class="bg-white p-6 rounded-md shadow-md">
+        <!-- Editing post title -->
+        <h1 class="text-2xl font-bold text-green-700 mb-4">Editing post</h1>
+
+        <!-- Render the form for editing the post -->
+        <%= render "form", post: @post %>
+
+        <!-- Links for navigation -->
+        <div class="mt-4">
+            <%= link_to "Show this post", @post, class: "text-green-600 hover:underline mr-4" %>
+            <%= link_to "Back to posts", posts_path, class: "text-green-600 hover:underline" %>
+        </div>
+    </div>
+</div>

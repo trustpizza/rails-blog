@@ -1,0 +1,17 @@
+<div id="<%= dom_id post %>" class="border rounded-md p-4 mb-4">
+  <h2 class="text-lg font-bold text-green-700 mb-2"><%= post.title %></h2>
+  <p class="text-gray-700 mb-2"><%= truncate(post.body, length: 200) %></p>
+  
+  
+  <!-- New Comment Button -->
+  <% if params[:action] == 'show' %>    
+    <!-- Comments Section -->
+    <%= turbo_frame_tag "comments_section" do %>
+      <div class="mt-4">
+        <h3 class="text-md font-semibold text-green-700 mb-2">Comments:</h3>
+        <%= render partial: 'comments/comment', collection: @post.comments, as: :comment %>
+      </div>
+    <% end %>
+    <%= render 'new_comment_button', post: post %>
+  <% end %>
+</div>

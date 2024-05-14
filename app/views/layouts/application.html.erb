@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class='bg-gray-100 font-sans leading-normal tracking-normal'>
+    <header class="bg-green-500 p-6">
+      <div class="container mx-auto">
+        <%= link_to 'Your Blog Title', root_url, class: 'text-white text-2xl font-bold' %>
+      </div>
+    </header>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+
+
+    <!-- Footer (Empty for now) -->
+    <footer class="bg-gray-200 text-center text-sm p-3 mt-6">
+        <!-- Footer Content Goes Here -->
+    </footer>
+  </body>
+</html>

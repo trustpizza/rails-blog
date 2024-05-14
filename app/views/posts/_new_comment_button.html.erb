@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "new_comment_form" do %>
+
+<div class="mt-4">
+    <%= link_to 'New Comment', new_post_comment_path(post), remote: true %>
+</div>
+
+
+<% end %>

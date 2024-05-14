@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "comments_section", partial: 'comments/comment', collection: @post.comments, as: :comment %>
+<%= turbo_stream.append "comments_section", @comment %>
+<%= turbo_stream.replace "new_comment_form", partial: 'posts/new_comment_button', locals: { post: @post } %>
