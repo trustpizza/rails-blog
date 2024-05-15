@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = @post.comments.new(comment_params)
+    @comment = @post.comments.build(comment_params)
     @comment.user = current_user
   
 

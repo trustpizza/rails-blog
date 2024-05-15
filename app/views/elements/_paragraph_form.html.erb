@@ -1,0 +1,23 @@
+<li data-id="<%= paragraph.id %>" class="mb-2 p-2 mx-auto bg-white rounded-md overflow-hidden shadow-lg hover:bg-slate-100 transition duration-100 cursor-pointer" data-controller="editpost">
+  <div class="leading-6" data-editpost-target="content">
+    <% if paragraph.content.present? %>
+      <%= paragraph.content %>
+    <% else %>
+      <span class="underline cursor-pointer">Click to Add Content</span>
+    <% end %>
+  </div>
+  <div class="hidden" data-editpost-target="form">
+    <%= form_with(model: [@post, paragraph]) do |form| %>
+      <%= form.rich_text_area :content %> <!-- This ought to be turned into a turbostream eventually -->
+      <div class="flex justify-between items-center">
+        <div class="flex gap-2">
+          <%= form.submit 'Save', data: { editpost_target: 'button' }, class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
+          <a class="block rounded-lg py-3 px-5 bg-gray-500 hover:bg-gray-600 text-white font-medium cursor-pointer my-2" data-editpost-target="button">Cancel</a>
+        </div>
+        <span>
+          <%= link_to 'Delete', [@post, paragraph], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-5 rounded" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</li>
