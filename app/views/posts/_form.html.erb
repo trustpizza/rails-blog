@@ -1,35 +1,40 @@
-<!-- Main Content -->
-<div class="container mx-auto mt-6">
-    <div class="grid grid-cols-4 gap-4">
-        <!-- Sidebar (Empty for now) -->
-        <div class="col-span-1 bg-gray-200 p-4">
-            <!-- Sidebar Content Goes Here -->
-        </div>
-
-        <!-- Post Form -->
-        <div class="col-span-3 bg-white p-4">
-            <%= form_with(model: post) do |form| %>
-                <% if post.errors.any? %>
-                    <div class="text-red-600 mb-4">
-                        <h2 class="font-bold"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-                        <ul class="list-disc ml-4">
-                            <% post.errors.each do |error| %>
-                                <li><%= error.full_message %></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                <% end %>
-
-                <div class="mb-4">
-                    <%= form.label :title, class: "block font-semibold text-green-700 mb-2" %>
-                    <%= form.text_field :title, class: "block w-full py-2 px-3 mt-1 rounded-md border border-gray-300 focus:outline-none focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 shadow-md" %>
-                </div>
-
-                <div class="mb-4">
-                    <%= form.submit class: "inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" %>
-                </div>
-            <% end %>
-        </div>
+<%= form_with(model: post, html: { class: "bg-white border shadow-md rounded-sm pb-8 mb-4 overflow-hidden" }) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation" class="m-4 bg-red-50 text-red-500 px-4 py-2 font-medium rounded-lg mt-3 mb-6">
+      <h2 class="font-bold text-lg"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul class="list-disc mt-1 px-4">
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-</div>
+  <% end %>
+
+  <% if action_name == "edit" %>
+    <div class="bg-gray-200 p-4 border-b border-gray-300">
+      <h2 class="text-xl font-semibold text-gray-800">Editing Post</h2>
+    </div>
+  <% end %>
+
+  <div class="my-2 px-8">
+    <%= form.label :title, class: "block text-lg font-medium text-gray-700" %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-black outline-none p-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-2 px-8">
+    <%= form.label :description, class: "block text-lg font-medium text-gray-700" %>
+    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-black outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-2 px-8 overflow-hidden">
+    <%= form.label :header_image, class: "block text-lg font-medium text-gray-700" %>
+    <%= form.file_field :header_image, class: "py-2 mt-2 w-full" %>
+    <% if post.header_image.present? %>
+      <%= image_tag post.header_image, class: "max-w-full shadow-md max-h-32 w-auto mt-2" %>
+    <% end %>
+  </div>
+
+  <div class="px-8">
+    <%= form.submit 'Save Post', class: "w-full block rounded-sm py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
+  </div>
+<% end %>

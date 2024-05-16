@@ -1,6 +1,6 @@
   class ElementsController < ApplicationController
     before_action :set_post
-    before_action :set_element, only: %i[ update destroy ]
+    before_action :set_element, only: %i[ update destroy move ]
 
     # POST /elements or /elements.json
     def create
@@ -42,6 +42,14 @@
       end
     end
 
+    def move
+      system('clear')
+      puts(@element.position)
+      @element.insert_at(params[:position].to_i)
+      head :ok
+
+      puts(@element.position)
+    end
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_element
@@ -54,6 +62,6 @@
 
       # Only allow a list of trusted parameters through.
       def element_params
-        params.require(:element).permit(:element_type, :content)
+        params.require(:element).permit(:element_type, :content, :image)
       end
   end

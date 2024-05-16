@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy publish unpublish ]
   before_action :authenticate_admin!, only: %i[ edit update destroy create new ]
 
   # GET /posts or /posts.json
@@ -59,15 +59,38 @@ class PostsController < ApplicationController
     end
   end
 
+  def publish
+    respond_to do |format|
+      if @post.update(published: true, published_at: Time.now)
+        format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
+      else
+        notice = @post.errors.full_messages.join(". ") << "."
+        format.html { redirect_to edit_post_path(@post), notice: notice}
+      end
+    end
+  end
+  
+  def unpublish
+    respond_to do |format|
+      if @post.update(published: false,  published_at: nil)
+        format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
+      else
+        notice = @post.errors.full_messages.join(". ") << "."
+        format.html { redirect_to edit_post_path(@post), notice: notice}
+      end
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :user_id)
+      params.require(:post).permit(:title, :body, :description, :header_image)
     end
 
     def authenticate_admin!

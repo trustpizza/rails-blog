@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   get 'pages/home'
   get '/admin', to: 'pages#admin'
   resources :posts do 
-    resources :elements
+    member do
+      post :publish
+      post :unpublish
+    end
+    resources :elements do
+      patch :move, on: :member
+    end
     resources :comments
   end
   devise_for :users
@@ -12,5 +18,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   
   # Defines the root path route ("/")
-  root "posts#index"
+  root "pages#home"
 end

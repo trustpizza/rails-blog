@@ -1,3 +1,5 @@
 <% if element.element_type == 'paragraph' %>
   <%= render 'elements/paragraph_form', paragraph: element %>
+<% elsif element.element_type == 'image' %>
+  <%= render 'elements/image_form', image: element %>
 <% end %>

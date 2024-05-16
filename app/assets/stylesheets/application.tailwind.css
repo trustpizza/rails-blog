@@ -1,4 +1,19 @@
 @import 'actiontext.css';
+@import "actiontext";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwindcss typography;
+
+@layer base {
+    pre {
+        @apply bg-gray-800 text-white p-4 rounded-md overflow-x-auto !important;
+    }
+}
+
+@font-face {
+    font-family: "moon";
+    src: url("moon.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

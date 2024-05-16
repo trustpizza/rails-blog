@@ -1,22 +1,21 @@
-<%= form_with(model: [@post, comment], local: true) do |form| %>
+<%= form_with(model: [@post, comment], local: true, html: { class: "bg-white p-6 rounded-lg shadow-md" }) do |form| %>
   <% if comment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-        <% comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="mb-4 p-4 bg-red-50 border border-red-400 text-red-700 rounded-lg">
+      <h2 class="font-semibold mb-2"><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul class="list-disc list-inside">
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="mb-4">
+    <%= form.label :body, class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_area :body, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex justify-end">
+    <%= form.submit 'Submit', class: "px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 <% end %>

@@ -72,3 +72,7 @@ end
 gem "devise", "~> 4.9"
 
 gem "tailwindcss-rails", "~> 2.6"
+
+gem "friendly_id", "~> 5.5"
+
+gem "acts_as_list", "~> 1.1"

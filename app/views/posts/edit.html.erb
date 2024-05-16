@@ -1,26 +1,64 @@
-<div class="container mx-auto mt-6">
-    <div class="bg-white p-6 rounded-md shadow-md">
-        <!-- Editing post title -->
-        <h1 class="text-2xl font-bold text-green-700 mb-4">Editing post</h1>
+  <div class="mx-auto 4xl:w-3/4 w-full">
 
-        <!-- Render the form for editing the post -->
-        <%= render "form", post: @post %>
-        <% @post.elements.each do |element| %>
-            <%= render 'elements/element_form', element:element %>
-        <% end %>
-        
-        <!-- Links for navigation -->
-        <div class="mt-4">
-            <%= link_to "Show this post", @post, class: "text-green-600 hover:underline mr-4" %>
-            <%= link_to "Back to posts", posts_path, class: "text-green-600 hover:underline" %>
-        </div>
+    <div class="flex flex-col md:grid md:grid-cols-3 gap-2">
+      <span class="md:col-span-1">
+        <%= link_to "Back", posts_path, class: "block mb-1 rounded-sm py-2 md:mt-3 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium", data: {turbo: false} %>
+        <!-- Form for editing the post -->
         <div>
-            <%= form_with(model: [@post, @element], local: true ) do |form| %>
-                <%= form.hidden_field :element_type, value: 'paragraph' %>
-                <%= form.submit class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-small cursor-pointer" do %>
-                    <i class="fa-solid fa-paragraph"></i> 
-                <% end %>
-            <% end %>
+          <%= render "form", post: @post %>
+          <% if @post.published? %>
+            <%= button_to 'Unpublish',
+                unpublish_post_path(@post),
+                method: :post,
+                remote: true,
+                class: "block mx-1 text-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-sm"%>
+          <% else %>
+            <%= button_to 'Publish',
+                publish_post_path(@post),
+                method: :post,
+                remote: true,
+                class: "block mx-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm"%>
+          <% end %>
         </div>
+      </span>
+
+
+      <!-- Form for creating a PostElement -->
+      <span class="mx-1 md:mx-px flex-grow md:col-span-2">
+        <span class="flex items-center gap-2">
+          <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+            <%= form.hidden_field :element_type, value: 'paragraph' %>
+            <%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-small cursor-pointer") do %>
+              <i class="fa-solid fa-paragraph"></i> 
+            <% end %>
+          <% end %>
+          <%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+            <%= form.hidden_field :element_type, value: 'image' %>
+            <%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer") do %>  
+                <i class="fa-solid fa-camera-alt"></i>
+            <% end %>
+          <% end %>
+        </span>
+
+        <!--Rendering Each Post Element -->
+        <div class="flex-grow mx-auto bg-white rounded-sm overflow-hidden shadow-md">
+          
+          <%# if @post.published? %>
+            <div class="bg-gray-200 p-4 border-b border-gray-300 text-right">
+              Published <%#= time_ago_in_words(@post.published_at) %> ago.
+            </div>
+          <%# end %>
+
+          <ul class="p-4 pt-6" data-controller="drag" data-drag-url="/posts/<%=@post.id%>/elements/:id/move">
+            <% @post.elements.each do |element| %>
+              <% if element.persisted? %>
+                <%= render partial: 'elements/element_form', locals: { element: element } %>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+      </span>
     </div>
-</div>
+
+  </div>
