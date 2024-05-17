@@ -43,12 +43,8 @@
     end
 
     def move
-      system('clear')
-      puts(@element.position)
       @element.insert_at(params[:position].to_i)
       head :ok
-
-      puts(@element.position)
     end
     private
       # Use callbacks to share common setup or constraints between actions.

@@ -76,3 +76,5 @@ gem "tailwindcss-rails", "~> 2.6"
 gem "friendly_id", "~> 5.5"
 
 gem "acts_as_list", "~> 1.1"
+
+gem "faker", "~> 3.3"

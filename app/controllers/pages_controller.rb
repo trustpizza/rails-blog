@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :authenticate_admin!, except: %i[ home ] 
   def home
+    @posts = Post.all
   end
 
   def admin

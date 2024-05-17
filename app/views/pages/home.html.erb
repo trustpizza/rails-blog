@@ -1,70 +1,36 @@
-<div class="flex flex-col h-screen w-full">
-    <header class="p-4 justify-self-start flex justify-around w-full bg-slate-200">
-        <div class="font-moon font-bold text-2xl" >
-            A Little Love Story
+<section class="relative py-20 overflow-hidden">
+  <img class="absolute top-0 right-0 xl:mt-10 -mr-24 lg:-mr-0" src="saturn-assets/images/blog/star-circle-right.svg" alt="">
+  <img class="hidden sm:block absolute bottom-0 left-0 -mb-48 lg:mb-0" src="saturn-assets/images/blog/blue-light-left.png" alt="">
+  <div class="relative container px-4 mx-auto">
+    <div class="max-w-xl lg:max-w-7xl mx-auto">
+      <div class="max-w-2xl mx-auto mb-15 text-center">
+        <span class="inline-block py-1 px-3 mb-4 text-xs font-semibold text-orange-900 bg-orange-50 rounded-full">Our Blog</span>
+        <h1 class="font-heading text-5xl xs:text-6xl md:text-7xl font-bold">
+          <span>Travels &</span>
+          <span class="font-serif italic">Updates</span>
+        </h1>
+      </div>
+      <div class="flex flex-wrap -mx-4 mb-18">
+        <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+          <a class="block group w-full" href="#">
+            <img class="block w-full mb-5" src="saturn-assets/images/blog/article-big.png" alt="">
+            <span class="block text-gray-500 mb-5">Jul 20, 2022</span>
+            <h4 class="text-3xl font-semibold text-gray-900 group-hover:text-orange-900 mb-5">Consectures Dummy Content Velit officia consequat duis enim velit</h4>
+            <p class="max-w-xl text-lg text-gray-500">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit xercitation veniam consequat sunt nostrud amet.</p>
+          </a>
         </div>
-    </header>
-
-    <div class="grow text-center overflow-hidden flex items-center justify-center p-2 md:px-40 lg:mx-40">
-        <div class="h-full overflow-x-auto overflow-y-hidden grow flex items-center scroll-auto snap-x snap-mandatory gap-2" data-controller="carousel" > <!-- Slider Container -->
-            <%
-                images = [
-                    {
-                        title: "thewhites",
-                        alt: "The White Mountains"
-                    },
-                    {
-                        title: "killington",
-                        alt: "Killington, Vermont"
-                    },
-                    {
-                        title: "axel-and-arlo",
-                        alt: "A man and his dog with a mountain sunset behind"
-                    },
-                    {
-                        title: "briana_and_arlo_on_rock_2023",
-                        alt: "Briana and Dog on the Rock"
-                    },
-                    {
-                        title: "cabin_cuddle_winter_2023",
-                        alt: "Briana and Axel in the New House Winter 2023"
-                    },
-                    {
-                        title: "muse_5k_2023",
-                        alt: "Post 5k Smiles"
-                    },
-                    {
-                        title: "winter_dam_2023",
-                        alt: "Smiling together on the dam, Winter of 2023"
-                    }
-                ]
-            %>
-            <%images.each_with_index do |img, idx| %>
-                <div data-carousel-target="slide" class="min-w-full min-h-full snap-center grid origin-center scale-100 transition-transform items-center relative overflow-hidden w-full h-full bg-cover bg-center rounded-lg">
-                        <div class="relative overflow-hidden h-full">
-                            <%= image_tag img[:title],
-                                alt: img[:alt],
-                                class: "object-cover object-center w-full h-full",
-                                id: "slide_" + idx.to_s
-                            %>
-                        </div>
-                </div>
-            <% end %>
-
+        <div class="w-full lg:w-1/2 px-4">
+          <% @posts.each do |post| %>
+            <%= render 'post_card', post: post %>
+          <% end %>
         </div>
+      </div>
+      <div class="text-center">
+        <%= link_to posts_path, class: "relative group inline-block py-4 px-7 font-semibold text-orange-900 hover:text-orange-50 rounded-full bg-orange-50 transition duration-300 overflow-hidden" do %>
+          <div class="absolute top-0 right-full w-full h-full bg-gray-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+          <span class="relative">See More Articles</span>
+        <% end %>
+      </div>
     </div>
-
-    <nav class="self-end bg-slate-200 p-2 w-screen flex justify-center">  
-        <ul class="flex gap-2 text-center">
-            <li>
-                <%= link_to 'Journal', posts_path %>
-            </li>
-            <li>
-                <%= link_to 'Photos', "photos_path" %>
-            </li>
-            <li>
-                <%= link_to 'Map' %>
-            </li>
-        </ul>
-    </nav>
-</div>
+  </div>
+</section>

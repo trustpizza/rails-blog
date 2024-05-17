@@ -1,0 +1,11 @@
+<%= link_to post_path(post), class: "md:flex group mb-8" do %>
+    <%= image_tag post.header_image, class: "w-48 h-40 rounded-md" %>
+    <div class="mt-4 md:mt-0 md:ml-6 pt-2">
+        <span class="block text-gray-500 mb-2">
+            Jul 20, 2022
+        </span>
+        <h4 class="text-xl font-semibold text-gray-900 group-hover:text-orange-900">
+            <%= post.title %>
+        </h4>
+    </div>
+<% end %>
