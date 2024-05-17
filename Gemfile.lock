@@ -296,7 +296,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9)
-  faker (~> 3.3)
+  faker
   friendly_id (~> 5.5)
   image_processing (~> 1.2)
   importmap-rails

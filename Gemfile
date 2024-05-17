@@ -77,4 +77,4 @@ gem "friendly_id", "~> 5.5"
 
 gem "acts_as_list", "~> 1.1"
 
-gem "faker", "~> 3.3"
+gem 'faker'
