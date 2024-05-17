@@ -15,8 +15,6 @@ export default class extends Controller {
 
     let data = new FormData()
     data.append("position", event.newIndex + 1)
-    console.log(event.newIndex + 1)
-    console.log(id)
     let urlTemplate = this.data.get("url")
     let url = urlTemplate.replace(":post_id", postId).replace(":id", id)
 
