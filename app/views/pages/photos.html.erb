@@ -1,0 +1,14 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+    <%@photos.each do |photo| %>
+        <div class="group cursor-pointer relative">
+            <%= image_tag photo, class: "w-full h-48 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"%>
+            <!-- Later make it so that you can view these images
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <button class="bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                View
+            </button>
+            </div>
+            -->
+        </div>
+    <%end%>
+</div>

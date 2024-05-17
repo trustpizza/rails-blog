@@ -1,27 +1,10 @@
 <div class="w-full px-8 my-12">
-  <div class="flex justify-between items-center mb-4 mx-4">
-    <%= link_to "Back", root_path, class: "hidden md:block mb-1 rounded-sm py-2 md:mt-3 px-4 bg-red-500 text-white hover:bg-red-600 inline-block font-medium", data: {turbo: false} %>
-    <h1 class="mr-auto ml-auto font-bold text-4xl">Posts</h1>
+  <div class="flex justify-between items-center mb-4 pb-4 mx-4">
+    <h1 class="mr-auto ml-auto font-bold text-4xl underline">Posts</h1>
   </div>
   <div class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
     <% @posts.each do |post| %>
-      <%= link_to post_path(post) do %>
-        <div class="flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-          <% if post.header_image.persisted? %>
-            <div class="aspect-w-4 aspect-h-3">
-              <%= image_tag post.header_image, class: 'object-cover rounded-t-lg' %>
-            </div>
-          <% end %>
-          <span class="px-6 py-2 grow flex flex-col">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              <%=post.title%>
-            </h5>
-            <p class="font-normal text-gray-700 ">
-              <%=post.description%>
-            </p>
-          </span>
-        </div>
-      <% end %>
+      <%= render "post_card", post: post %>
     <% end %>
   </div>
 </div>

@@ -11,7 +11,7 @@ Post.delete_all
 Element.delete_all
 user = User.last
 # Define how much data to seed
-num_of_posts = 5
+num_of_posts = 6
 elements_per_post = 3
 
 num_of_posts.times do
@@ -19,7 +19,7 @@ num_of_posts.times do
 
     post = user.posts.create!(
         title: Faker::Lorem.sentence(word_count: 6),
-        description: Faker::Lorem.paragraph(sentence_count: 3),
+        description: Faker::Lorem.paragraph(sentence_count: 4),
         )
     img_io = URI.open(img_url)
     post.header_image.attach(io:img_io, filename: File.basename(img_url))
@@ -30,6 +30,13 @@ num_of_posts.times do
             content: Faker::Lorem.paragraphs(number: 15).join("\n\n"),
             element_type: "paragraph"
         )
+        
+        element = post.elements.create!(
+            element_type: "image",
+            )
+        img_url = Faker::LoremFlickr.image(size: '1000x1000', search_terms: ["nature"])
+        img_io = URI.open(img_url)
+        element.image.attach(io:img_io, filename: File.basename(img_url))
     end
 end
 puts "Seeded #{Post.count} posts with #{Element.count} elements."

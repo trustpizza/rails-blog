@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'pages/home'
+  get 'photos', to: 'pages#photos'
   get '/admin', to: 'pages#admin'
   resources :posts do 
     member do

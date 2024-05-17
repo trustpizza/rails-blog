@@ -1,0 +1,27 @@
+<header class="p-4 dark:bg-gray-100 dark:text-gray-800">
+	<div class="container flex justify-between h-16 mx-auto">
+			<%= link_to root_url, class: "flex items-center p-2 flex items-center hover:underline" do %>
+				<%= image_tag "mountains", class: "w-12 h-12 dark:text-violet-600" %>
+				<div class="">A Little Love Story</div>
+			<%end%>
+			<ul class="items-stretch hidden space-x-3 md:flex">
+				<li class="flex">
+					<%= link_to posts_path, class: "flex items-center px-4 -mb-1 border-b-2 dark:border- hover:underline" do %>
+						<span>Posts</span>
+					<%end%>			</li>
+				<li class="flex">
+					<%= link_to "", class: "flex items-center px-4 -mb-1 border-b-2 dark:border- hover:underline" do %>
+						<span>Pictures</span>
+					<%end%>			</li>
+				<li class="flex">
+					<%= link_to "", class: "flex items-center px-4 -mb-1 border-b-2 dark:border- hover:underline" do %>
+						<span>About Us</span>
+					<%end%>			</li>
+			</ul>
+			<button title="Button" type="button" class="p-4 md:hidden">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 dark:text-gray-800">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+			</button>
+	</div>
+</header>
