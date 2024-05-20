@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: %i[ new edit create update destroy ]
   before_action :set_post
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ update destroy ]
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
@@ -74,5 +75,12 @@ class CommentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def comment_params
       params.require(:comment).permit(:body, :user_id, :post_id)
+    end
+
+    def authenticate_user!
+      print(@comment.user)
+      unless @comment.user == current_user || @comment.user.is_admin?
+        redirect_to @comment.post, alert: "This is not your comment."
+      end
     end
 end
