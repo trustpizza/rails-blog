@@ -78,8 +78,7 @@ class CommentsController < ApplicationController
     end
 
     def authenticate_user!
-      print(@comment.user)
-      unless @comment.user == current_user || @comment.user.is_admin?
+      unless @comment.user == current_user || current_user.is_admin?
         redirect_to @comment.post, alert: "This is not your comment."
       end
     end
