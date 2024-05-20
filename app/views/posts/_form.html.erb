@@ -11,9 +11,6 @@
   <% end %>
 
   <% if action_name == "edit" %>
-    <div class="bg-gray-200 p-4 border-b border-gray-300">
-      <h2 class="text-xl font-semibold text-gray-800">Editing Post</h2>
-    </div>
   <% end %>
 
   <div class="my-2 px-8">
@@ -37,4 +34,5 @@
   <div class="px-8">
     <%= form.submit 'Save Post', class: "w-full block rounded-sm py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer" %>
   </div>
+  <%#= button_to post_path, post, data: {turbo_method: :delete} %>
 <% end %>

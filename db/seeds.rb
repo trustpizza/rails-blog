@@ -9,10 +9,30 @@
 #   end
 Post.delete_all
 Element.delete_all
+Comment.delete_all
 user = User.last
+
+def find_or_create_user(user_attributes)
+    user = User.find_or_create_by(email: user_attributes[:email])
+    
+    if user.persisted?
+        return user
+    end
+    user = User.create!(user_attributes)
+    return user
+end
+
+commenter1 = {email: 'user1@example.com', password: 'password1', password_confirmation: 'password1'}
+commenter2 = {email: 'user2@example.com', password: 'password2', password_confirmation: 'password2'}
+
+commenter1 = find_or_create_user(commenter1)
+commenter2 = find_or_create_user(commenter2)
+
+commenters = [commenter1, commenter2]
 # Define how much data to seed
 num_of_posts = 6
 elements_per_post = 3
+comments_per_post = 2
 
 num_of_posts.times do
     img_url = Faker::LoremFlickr.image(size: '800x800', search_terms: ["nature"])
@@ -38,5 +58,14 @@ num_of_posts.times do
         img_io = URI.open(img_url)
         element.image.attach(io:img_io, filename: File.basename(img_url))
     end
+
+    comments_per_post.times do
+        commenters.each do |commenter|
+            comment = commenter.comments.build(body: Faker::Lorem.sentence(word_count: 12))
+            comment.post = post
+            comment.save!
+        end
+    end
 end
-puts "Seeded #{Post.count} posts with #{Element.count} elements."
+puts "Seeded #{Post.count} posts with #{Element.count} elements and #{Comment.count} comments."
+
