@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'pages#admin'
   resources :posts do 
     member do
-      post :publish
-      post :unpublish
+      post :toggle_publish  
     end
     resources :elements do
       patch :move, on: :member

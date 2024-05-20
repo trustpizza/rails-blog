@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy publish unpublish ]
+  before_action :set_post, only: %i[ show edit update destroy toggle_publish ]
   before_action :authenticate_admin!, only: %i[ edit update destroy create new ]
 
   # GET /posts or /posts.json
@@ -59,28 +59,18 @@ class PostsController < ApplicationController
     end
   end
 
-  def publish
-    respond_to do |format|
-      if @post.update(published: true, published_at: Time.now)
-        format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
-      else
-        notice = @post.errors.full_messages.join(". ") << "."
-        format.html { redirect_to edit_post_path(@post), notice: notice}
-      end
-    end
-  end
   
-  def unpublish
+  def toggle_publish
     respond_to do |format|
-      if @post.update(published: false,  published_at: nil)
+      if @post.update(published: !@post.published, published_at: Time.now)
+        format.turbo_stream
         format.html { redirect_to edit_post_path(@post), notice: "Post was successfully published"}
       else
-        notice = @post.errors.full_messages.join(". ") << "."
-        format.html { redirect_to edit_post_path(@post), notice: notice}
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

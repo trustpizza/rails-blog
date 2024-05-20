@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "publish_button" do %>
+    <% if @post.published? %>
+        <%= button_to 'Unpublish',
+            toggle_publish_post_path(@post),
+            method: :post,
+            remote: true,
+            class: "mt-4 w-full bg-gray-500 text-white py-2 rounded hover:bg-gray-700 transition"%>
+    <% else %>
+        <%= button_to 'Publish',
+            toggle_publish_post_path(@post),
+            method: :post,
+            remote: true,
+            class: "mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700 transition"%>
+    <% end %>
+<% end %>

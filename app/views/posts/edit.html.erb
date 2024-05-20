@@ -1,55 +1,43 @@
-    <div class="container mx-auto p-4">
-        <div class="flex flex-col lg:flex-row">
-            <!-- Sidebar (Form Area) -->
-			<div class="w-full lg:w-1/4 lg:top-4 bg-white rounded-lg shadow-lg flex flex-col">
-				<h2 class="bg-gray-200 p-4 border-b border-gray-300 text-xl font-bold mb-4">Edit Post</h2>
-				<div class="w-full lg:sticky lg:top-4 bg-white p-4 ">
-								<!-- Form goes here -->
-								<%= render "form", post: @post %>
-					<% if @post.published? %>
-						<%= button_to 'Unpublish',
-							unpublish_post_path(@post),
-							method: :post,
-							remote: true,
-							class: "mt-4 w-full bg-gray-500 text-white py-2 rounded hover:bg-gray-700 transition"%>
-					<% else %>
-						<%= button_to 'Publish',
-							publish_post_path(@post),
-							method: :post,
-							remote: true,
-							class: "mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700 transition"%>
-					<% end %>
-							</div>
+<div class="container mx-auto p-4">
+	<div class="flex flex-col lg:flex-row">
+		<!-- Sidebar (Form Area) -->
+		<div class="w-full lg:w-1/4 lg:top-4 bg-white rounded-lg shadow-lg flex flex-col">
+			<h2 class="bg-gray-200 p-4 border-b border-gray-300 text-xl font-bold mb-4 rounded-t-lg">Edit Post</h2>
+			<div class="w-full lg:sticky lg:top-4 bg-white p-4 ">
+				<!-- Form goes here -->
+				<%= render "form", post: @post %>
+				<%= render "toggle_publish", post: @post %>
 			</div>
+		</div>
 
-            <!-- Main Content Area -->
-            <div class="w-full lg:w-3/4 lg:ml-4 mt-4 lg:mt-0">
-				<!-- Published Ago Section -->
-				<% if true %>
-					<div class="bg-gray-200 p-4 border-b border-gray-300 text-right rounded-t-lg">
-						Published <%#= time_ago_in_words(@post.published_at) %> ago.
-					</div>
-				<%else%>
-					<div class="bg-gray-200 p-4 border-b border-gray-300 text-right rounded-t-lg">
-						Not 
-					</div>
-				<%end%>
-				<!-- Page Elements -->
-                <div class="bg-white p-4 rounded-b-lg shadow-lg">
+		<!-- Main Content Area -->
+		<div class="w-full lg:w-3/4 lg:ml-4 mt-4 lg:mt-0">
+			<!-- Published Ago Section -->
+			<% if true %>
+				<div class="bg-gray-200 p-4 border-b border-gray-300 text-right rounded-t-lg">
+					Published <%#= time_ago_in_words(@post.published_at) %> ago.
+				</div>
+			<%else%>
+				<div class="bg-gray-200 p-4 border-b border-gray-300 text-right rounded-t-lg">
+					Not 
+				</div>
+			<%end%>
+			<!-- Page Elements -->
+			<div class="bg-white p-4 rounded-b-lg shadow-lg">
+			
+				<h2 class="text-xl font-bold mb-4">
+					<%=@post.title%>
+				</h2>
 				
-                    <h2 class="text-xl font-bold mb-4">
-						<%=@post.title%>
-					</h2>
-					
-                    <!-- Main content goes here -->
-                    <ul class="p-4 pt-6" data-controller="drag" data-drag-url="/posts/<%=@post.id%>/elements/:id/move">
-						<% @post.elements.each do |element| %>
-							<% if element.persisted? %>
-								<%= render partial: 'elements/element_form', locals: { element: element } %>
-							<% end %>
+				<!-- Main content goes here -->
+				<ul class="p-4 pt-6" data-controller="drag" data-drag-url="/posts/<%=@post.id%>/elements/:id/move">
+					<% @post.elements.each do |element| %>
+						<% if element.persisted? %>
+							<%= render partial: 'elements/element_form', locals: { element: element } %>
 						<% end %>
-					</ul>
-                </div>
-            </div>
-        </div>
-    </div>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
