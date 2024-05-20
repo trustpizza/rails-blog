@@ -2,8 +2,13 @@
   <div class="border rounded-md p-2 mb-2">
     <p class="text-gray-700"><%= comment.body %></p>
     <div class="text-right">
-      <%= link_to 'Edit', edit_post_comment_path(@post, comment), class: "text-green-600 hover:underline" %>
-      <%= button_to "delete", post_comment_path(@post, comment), method: :delete%>
+      <% if current_user == comment.user %>
+        <%= link_to 'Edit', edit_post_comment_path(@post, comment), class: "text-green-600 hover:underline" %>
+      <% end %>
+
+      <% if current_user == comment.user || current_user.is_admin? %>
+        <%= button_to "delete", post_comment_path(@post, comment), method: :delete%>
+      <% end %>
     </div>
   </div>
 </div>
