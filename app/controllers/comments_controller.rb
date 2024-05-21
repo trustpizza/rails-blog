@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: %i[ new edit create update destroy ]
+  before_action :authenticate_current_user!, only: %i[ new edit create update destroy ]
   before_action :set_post
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ update destroy ]
@@ -77,7 +77,7 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body, :user_id, :post_id)
     end
 
-    def authenticate_user!
+    def authenticate_current_user!
       unless @comment.user == current_user || current_user.is_admin?
         redirect_to @comment.post, alert: "This is not your comment."
       end

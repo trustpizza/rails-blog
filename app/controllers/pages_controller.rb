@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_admin!, except: %i[ home ] 
+  before_action :authenticate_admin!, only: %i[ admin ] 
   def home
     @display_post = Post.first
     @posts = Post.limit(3)
@@ -21,10 +21,10 @@ class PagesController < ApplicationController
 
   private
 
-  def authenticate_admin!
-    unless current_user && current_user.is_admin?
-      redirect_to new_user_session_path
-    end
-  end
+  # def authenticate_admin!
+  #   unless current_user && current_user.is_admin?
+  #     redirect_to new_user_session_path
+  #   end
+  # end
 
 end

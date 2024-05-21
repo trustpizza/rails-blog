@@ -82,10 +82,4 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :description, :header_image)
     end
-
-    def authenticate_admin!
-      unless current_user && current_user.is_admin?
-        redirect_to root_path, alert: "You aren't an admin"
-      end
-    end
 end

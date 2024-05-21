@@ -1,4 +1,4 @@
-<header class="p-4 dark:bg-gray-100 dark:text-gray-800 lg:mb-4" data-controller="hamburger">
+<header class="p-4 dark:bg-gray-100 dark:text-gray-800 lg:mb-8" data-controller="hamburger">
 	<div class="container flex justify-between h-16 mx-auto">
 		<%= link_to root_url, class: "flex gap-4 items-center p-2 flex items-center hover:underline" do %>
 			<%= image_tag "mountains", class: "w-12 h-12 dark:text-violet-600" %>
@@ -23,25 +23,23 @@
 			<%= image_tag "closed_menu", class: "hidden w-6 dark:text-gray-800", data: {hamburger_target: "closeIcon" } %>
 		</button>
 	</div>
-		<ul class="items-stretch hidden space-x-3" data-hamburger-target="menu">
-			<div>			
-				<span class="flex justify-center items-center">
-					<li class="flex">
-						<%= link_to posts_path, class: "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0" do %>
-							<span>Posts</span>
-						<%end%>
-					</li>
-					<li class="flex">
-						<%= link_to photos_path, class: "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0" do %>
-							<span>Pictures</span>
-						<%end%>
-					</li>
-					<li class="flex">
-						<%= link_to about_us_path, class: "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0" do %>
-							<span>About Us</span>
-						<%end%>
-					</li>
-				</span>
-			</div>
+	<span class="items-stretch hidden space-x-3" data-hamburger-target="menu">
+		<ul class="flex justify-center items-center">
+			<li class="flex">
+				<%= link_to posts_path, class: "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0" do %>
+					<span>Posts</span>
+				<%end%>
+			</li>
+			<li class="flex">
+				<%= link_to photos_path, class: "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0" do %>
+					<span>Pictures</span>
+				<%end%>
+			</li>
+			<li class="flex">
+				<%= link_to about_us_path, class: "text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0" do %>
+					<span>About Us</span>
+				<%end%>
+			</li>
 		</ul>
+	</span>
 </header>

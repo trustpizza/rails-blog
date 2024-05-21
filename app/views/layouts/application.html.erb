@@ -11,10 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="dark:bg-gray-50 dark:text-gray-700 mb-4">   
+  <body class="dark:bg-gray-50 dark:text-gray-700 flex flex-col h-screen pb-4">   
       <%= render "shared/header" %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <%= yield %>
+      <main class="flex-grow">
+        <%= yield %>
+      </main>
   </body>
 </html>
