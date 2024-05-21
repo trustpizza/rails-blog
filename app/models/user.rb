@@ -6,7 +6,23 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
 
+  enum role: { user: 0, author: 1, admin: 2, owner: 3 }
+
+  def self.filtered_users(current_user)
+    if current_user.admin?
+      where.not(role: [:admin, :owner])
+    elsif current_user.owner?
+      where.not(id: current_user.id)
+    else
+      none
+    end
+  end
+
   def is_admin?
-    return self.role == 'admin'
+    return role == 'admin'
+  end
+
+  def is_author?
+    return role == 'author'
   end
 end
