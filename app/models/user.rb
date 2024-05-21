@@ -17,12 +17,4 @@ class User < ApplicationRecord
       none
     end
   end
-
-  def is_admin?
-    return role == 'admin'
-  end
-
-  def is_author?
-    return role == 'author'
-  end
 end

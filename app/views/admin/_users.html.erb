@@ -1,4 +1,4 @@
-<% turbo_frame_tag "admin_panel" do %>
+<%= turbo_frame_tag "admin-content" do %>
     <div class="overflow-x">
         <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
@@ -21,7 +21,7 @@
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                <% users.each do |user| %>
+                <% @users.each do |user| %>
                     <%= form_with model: user, remote: true do |f| %>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">

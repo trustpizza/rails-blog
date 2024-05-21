@@ -6,7 +6,7 @@
         <%= link_to 'Edit', edit_post_comment_path(@post, comment), class: "text-green-600 hover:underline" %>
       <% end %>
 
-      <% if current_user == comment.user || current_user.is_admin? %>
+      <% if current_user == comment.user || current_user.admin? %>
         <%= button_to "delete", post_comment_path(@post, comment), method: :delete%>
       <% end %>
     </div>

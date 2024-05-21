@@ -5,10 +5,10 @@
             <div class="items-stretch hidden md:flex space-x-3" data-hamburger-target="menu">
                 <ul class="flex justify-center gap-4 items-center w-full">
                     <li class="flex">
-                        <a href="">Posts</a>
+                        <%= link_to "Posts", posts_admin_index_path, data: { turbo_frame: "admin-content" } %>
                     </li>
                     <li class="flex">
-                        <a href="">Users</a>
+                        <%= link_to "Users", users_admin_index_path, data: { turbo_frame: "admin-content" }%>
                     </li>
                 </ul>
             </div>
@@ -21,7 +21,10 @@
 
     <!-- Main content -->
     <div class="overflow-auto shadow-md sm:rounded-lg">
-        <%= render "users", users: @users %>
+        <%= turbo_frame_tag id="admin-content" do %>
+            <%= render "posts", posts: @posts %>
+        <%end%>
+
     </div>
     <!-- Use turbo frames to make this automatically populate the various admin pages -->
 </div>
