@@ -1,8 +1,8 @@
 <div class="container mx-auto p-4 h-full border-t-2">
     <!-- Sidebar -->
     <nav class="bg-white border-gray-200 pb-2" data-controller="hamburger">
-        <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4 justify-end">
-            <div class="items-stretch hidden space-x-3" data-hamburger-target="menu">
+        <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4 justify-end md:justify-center">
+            <div class="items-stretch hidden md:flex space-x-3" data-hamburger-target="menu">
                 <ul class="flex justify-center gap-4 items-center w-full">
                     <li class="flex">
                         <a href="">Posts</a>
@@ -21,7 +21,7 @@
 
     <!-- Main content -->
     <div class="overflow-auto shadow-md sm:rounded-lg">
-        <%= render "admin_user", users: @users %>
+        <%= render "users", users: @users %>
     </div>
     <!-- Use turbo frames to make this automatically populate the various admin pages -->
 </div>
