@@ -2,17 +2,6 @@ class UsersController < ApplicationController
     before_action :authenticate_admin!
     before_action :set_user
 
-    def self.filtered_users(current_user)
-      if current_user.admin?
-        where.not(role: [:admin, :owner])
-      elsif current_user.owner?
-        where.not(id: current_user.id)
-      else
-        # For regular users, you may want to return an empty scope
-        none
-      end
-    end
-
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
