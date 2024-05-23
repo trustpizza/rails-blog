@@ -5,6 +5,10 @@
             <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum
                     tortor id nibh dignissim fermentum. Vivamus a elit nec nisl aliquet ullamcorper.</p>
         </div>
+        <%= @photo_urls %>
+        <%= @photo_urls.each do |url| %>
+            <%= image_tag url_for(url) %>
+        <%end%>
         <img src="https://via.placeholder.com/400" alt="Person 2" class="rounded-full mb-6">
         <div class="flex items-center flex-col">
             <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum
