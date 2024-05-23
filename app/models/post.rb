@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   friendly_id :title, use: [:slugged, :history, :finders]
 
 
-  belongs_to :user
+  belongs_to :author, class_name: "User", foreign_key: "user_id"
 
   has_many :comments, dependent: :destroy
   has_many :elements, dependent: :destroy

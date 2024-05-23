@@ -9,6 +9,10 @@
     pre {
         @apply bg-gray-800 text-white p-4 rounded-md overflow-x-auto !important;
     }
+
+    .truncate-50-chars {
+        max-width: calc(1ch * 50);
+    }
 }
 
 @font-face {
