@@ -10,7 +10,8 @@
 Post.delete_all
 Element.delete_all
 Comment.delete_all
-user = User.last
+admin = {email: "admin@email.com", password:"123456", password_confirmation:"123456", role: "admin"}
+author = {email: "author@email.com", password:"123456", password_confirmation:"123456", role: "author"}
 
 def find_or_create_user(user_attributes)
     user = User.find_or_create_by(email: user_attributes[:email])
@@ -25,6 +26,8 @@ end
 commenter1 = {email: 'user1@example.com', password: 'password1', password_confirmation: 'password1'}
 commenter2 = {email: 'user2@example.com', password: 'password2', password_confirmation: 'password2'}
 
+admin = find_or_create_user(admin)
+author = find_or_create_user(author)
 commenter1 = find_or_create_user(commenter1)
 commenter2 = find_or_create_user(commenter2)
 
@@ -36,8 +39,8 @@ comments_per_post = 2
 
 num_of_posts.times do
     img_url = Faker::LoremFlickr.image(size: '800x800', search_terms: ["nature"])
-
-    post = user.posts.create!(
+    
+    post = author.posts.create!(
         title: Faker::Lorem.sentence(word_count: 6),
         description: Faker::Lorem.paragraph(sentence_count: 4),
         )

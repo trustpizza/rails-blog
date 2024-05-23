@@ -6,9 +6,7 @@ class PagesController < ApplicationController
   end
 
   def about_us
-    directory_path = Rails.root.join('app', 'assets', 'images', 'about-us')
-    image_files = Dir["#{directory_path}/*"]
-    @photo_urls = image_files
+    @photos = Image.all
   end
   
   def photos
