@@ -80,3 +80,7 @@ gem "acts_as_list", "~> 1.1"
 gem 'faker'
 
 gem "letter_opener", "~> 1.10"
+
+gem "mail", "~> 2.8"
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
