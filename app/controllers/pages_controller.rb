@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
 
   def index
-    @display_post = Post.first
-    @posts = Post.limit(3)
+    @display_post = Post.published.first
+    @posts = Post.published.limit(3)
   end
 
   def about_us
@@ -10,8 +10,8 @@ class PagesController < ApplicationController
   end
   
   def photos
-    header_images = Post.includes(header_image_attachment: :blob).map { |post| post.header_image }
-    element_images = Element.includes(image_attachment: :blob).map { |element| element.image if element.image.attached? }.compact
+    header_images = Post.published.includes(header_image_attachment: :blob).map { |post| post.header_image }
+    element_images = Element.joins(:post).where(posts: { published: true }).includes(image_attachment: :blob).map { |element| element.image if element.image.attached? }.compact  
     @photos = header_images + element_images
   end
 end
