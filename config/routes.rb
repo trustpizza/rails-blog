@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Custom Routes
   get 'photos', to: 'pages#photos'
   get 'about-us', to: 'pages#about_us'
+
   resources :pages, only: %i[ index ]
   resources :photos
   resources :admin, only: %i[ index ] do
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
       get :users
     end
   end
+
+  resources :author, only: %i[ index ]
 
   resources :posts do 
     member do
