@@ -13,6 +13,9 @@
                     <li class="flex">
                         <%= link_to "Images", images_path, data: {turbo_frame: "admin-content" } %>
                     </li>
+                    <li class="flex">
+                        <%= link_to "New Images", new_image_path, data: { turbo_frame: "admin-content" } %>
+                    </li>
                 </ul>
             </div>
             <button title="Button" type="button" class="p-4 md:hidden" data-hamburger-target="button">
