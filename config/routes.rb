@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :author, only: %i[ index ]
+  resources :author, only: %i[ index ] do
+    collection do
+      get :user_posts
+    end
+  end
 
   resources :posts do 
     member do

@@ -1,7 +1,11 @@
 <div class="px-2 lg:px-4 h-full flex w-full justify-center items-center">
     <div class="dark:bg-gray-100 dark:text-gray-900">
 	<div class="container grid grid-cols-12 mx-auto">
-		<div class="flex flex-col justify-center col-span-12 align-middle dark:bg-gray-300 bg-no-repeat bg-cover lg:col-span-6 lg:h-auto" style="background-image: url('<%= url_for(@display_post.header_image) %>'); background-position: center center; background-blend-mode: multiply; background-size: cover;">
+        <% if @display_post.header_image.present? %>
+		<div class="flex flex-col justify-center col-span-12 align-middle dark:bg-gray-300 bg-no-repeat bg-cover lg:col-span-6 lg:h-auto bg-center bg-cover mix-blend-multiply" style="background-image: url('<%= url_for(@display_post.header_image) %>');">
+        <% else %>
+        <div class="flex flex-col justify-center col-span-12 align-middle dark:bg-gray-300 bg-no-repeat bg-cover lg:col-span-6 lg:h-auto bg-center bg-cover mix-blend-multiply">
+        <% end %>
             <div class="flex flex-col items-center p-8 py-12 text-center dark:text-gray-800">
                 <%= link_to post_path(@display_post), class: "" do %>
                     <div class="rounded-lg bg-gray-200 p-4 opacity-75 hover:opacity-85"> <!-- Added wrapper div with rounded-lg and bg-gray-200 -->
