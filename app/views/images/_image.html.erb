@@ -1,7 +1,8 @@
-<div id="<%= dom_id image %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= image.title %>
-  </p>
-
+<div class="relative">
+  <%= image_tag image.image, class: "object-cover w-full h-full" %>
+  <div class="absolute top-0 right-0 p-2">
+    <%= button_to image_path(image), method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded opacity-75 hover:opacity-100" do %>
+      X
+    <% end %>
+  </div>
 </div>

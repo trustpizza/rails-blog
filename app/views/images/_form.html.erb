@@ -1,22 +1,16 @@
-<%= form_with(model: image, class: "contents") do |form| %>
-  <% if image.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
-
-      <ul>
-        <% image.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<!-- app/views/images/_form.html.erb -->
+<div class="flex flex-col items-center justify-center">
+  <%= form_with(model: @image, url: images_path, multipart: true, local: true, class: "w-full max-w-lg bg-white p-8 rounded shadow-md") do |form| %>
+    <div class="mb-4">
+      <%= form.label :title, class: "block text-gray-700 font-bold mb-2" %>
+      <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     </div>
+
+    <div class="mb-4">
+      <%= form.label :image, class: "block text-gray-700 font-bold mb-2" %>
+      <%= form.file_field :image, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+
+    <%= form.submit "Upload", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   <% end %>
-
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
-<% end %>
+</div>

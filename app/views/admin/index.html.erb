@@ -10,6 +10,9 @@
                     <li class="flex">
                         <%= link_to "Users", users_admin_index_path, data: { turbo_frame: "admin-content" }%>
                     </li>
+                    <li class="flex">
+                        <%= link_to "Images", images_path, data: {turbo_frame: "admin-content" } %>
+                    </li>
                 </ul>
             </div>
             <button title="Button" type="button" class="p-4 md:hidden" data-hamburger-target="button">
