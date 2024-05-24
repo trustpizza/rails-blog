@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   def index
     @display_post = Post.published.first
     @posts = Post.published.limit(3)
+
+    if @display_post.blank? && @posts.blank?
+      redirect_to about_us_path
+    end
   end
 
   def about_us
