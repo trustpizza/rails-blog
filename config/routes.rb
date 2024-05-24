@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :author, only: %i[ index ] do
     collection do
-      get :user_posts
+      get :user_posts 
     end
   end
 
