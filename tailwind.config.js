@@ -5,5 +5,5 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js',
     './app/assets/images/*.svg'
-  ]
+  ] 
 }
