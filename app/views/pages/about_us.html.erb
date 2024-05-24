@@ -1,22 +1,4 @@
-<!--<div class="container mx-auto flex flex-col flex-wrap justify-center h-full">
-    <section class="px-4 flex-grow flex  flex-col justify-around">
-        <div class="flex items-center flex-col mb-6">
-            <h2 class="text-2xl font-bold mb-4">Briana and Axel</h2>
-            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum
-                    tortor id nibh dignissim fermentum. Vivamus a elit nec nisl aliquet ullamcorper.</p>
-        </div>
-        <% @photos.each do |img| %>
-            <%= image_tag img.image, alt: img.title, class: "flex-shrink-0 max-h-32 rounded-full object-cover mb-6" %>
-        <% end %>
-        <div class="flex items-center flex-col">
-            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum
-                    tortor id nibh dignissim fermentum. Vivamus a elit nec nisl aliquet ullamcorper.</p>
-        </div>
-    </section>
-</div>
--->
-<!-- component -->
-<div id="about" class="relative bg-white overflow-hidden">
+<div class="relative bg-white overflow-hidden mt-8">
     <div class="max-w-7xl mx-auto">
         <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
@@ -26,31 +8,33 @@
 
             <div class="pt-1"></div>
 
-            <main class="mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                 <div class="sm:text-center lg:text-left">
                     <h2 class="my-6 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
-                        About Us
+                        About us
                     </h2>
 
                     <p>
-                        Donec porttitor, enim ut dapibus lobortis, lectus sem tincidunt dui, eget ornare lectus ex non
-                        libero. Nam rhoncus diam ultrices porttitor laoreet. Ut mollis fermentum ex, vel viverra lorem
-                        volutpat sodales. In ornare porttitor odio sit amet laoreet. Sed laoreet, nulla a posuere
-                        ultrices, purus nulla tristique turpis, hendrerit rutrum augue quam ut est. Fusce malesuada
-                        posuere libero, vitae dapibus eros facilisis euismod. Sed sed lobortis justo, ut tincidunt
-                        velit. Mauris in maximus eros.
+                        Briana, a Physical Therapist, and Axel a Software Developer set off together on various misadventures and escapades.
+                        Follow us as we traipse through the Mountains, Canyons, Deserts, Rainforests, and any and all other natural mysteries
+                        that may reveal themselves unto us.  We're two nature lovin' weirdos on their second lap around with one another.
+                        Taggin along is none other than Arlo Guthrie, Senior Bown Cleaner, General Rabbit Hunter, and Best Boy along the adventures.
+                        Peace and Love.
                     </p>
                 </div>
             </main>
         </div>
     </div>
+    <!-- Carousel -->
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <% @photos.each_with_index do |img, index| %>
-            <% if index.zero? %>
-                <%= image_tag img.image, alt: img.title, class: "hidden" %>
-            <% else %>
-                <%= image_tag img.image, alt: img.title, class: "h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" %>
-            <% end %>
-        <% end %>
+        <div class="text-center overflow-hidden flex items-center justify-center p-2 h-full">
+            <div data-controller="carousel" class="h-full overflow-x-auto overflow-y-hidden flex snap-x snap-mandatory">
+                <% @photos.each do |img| %>
+                    <div class="snap-center flex-shrink-0 w-full h-full bg-cover bg-center rounded-lg">
+                        <%= image_tag img.image, alt: img.title, class: "w-full h-96 object-cover" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_current_user!, only: %i[ new edit create update destroy ]
+  before_action :authenticate_current_user!, only: %i[ edit create update destroy ]
   before_action :set_post
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ update destroy ]
