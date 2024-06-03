@@ -11,7 +11,9 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development" 
+    BUNDLE_WITHOUT="development" \
+    GMAIL_USERNAME="maxelolsson@gmail.com" \
+    GMAIL_PASSWORD="lfoxxmzmcqrdnuyt"
 
 # Throw-away build stage to reduce size of final image
 FROM base as build

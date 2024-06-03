@@ -84,3 +84,5 @@ gem "letter_opener", "~> 1.10"
 gem "mail", "~> 2.8"
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", require: false

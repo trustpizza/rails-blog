@@ -12,14 +12,30 @@
 
 		<!-- Main Content Area -->
 		<div class="w-full lg:w-3/4 lg:ml-4 mt-4 lg:mt-0">
+			<span class="flex items-center gap-2">
+				<%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+					<%= form.hidden_field :element_type, value: 'paragraph' %>
+					<%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-small cursor-pointer") do %>
+					<i class="fa-solid fa-paragraph"></i> 
+					<% end %>
+				<% end %>
+				<%= form_with(model: [ @post, @element ],  class: "mb-2") do |form| %>
+					<%= form.hidden_field :element_type, value: 'image' %>
+					<%= button_tag(type: "submit", class: "font-bold text-2xl block rounded-sm py-2 px-4 bg-slate-600 hover:bg-slate-700 text-white font-medium cursor-pointer") do %>  
+						<i class="fa-solid fa-camera-alt"></i>
+					<% end %>
+				<% end %>
+			</span>
+
+
 			<!-- Published Ago Section -->
-			<% if true %>
+			<% if @post.published? %>
 				<div class="bg-gray-200 p-4 border-b border-gray-300 text-right rounded-t-lg">
-					Published <%#= time_ago_in_words(@post.published_at) %> ago.
+					Published <%= time_ago_in_words(@post.published_at) %> ago.
 				</div>
 			<%else%>
 				<div class="bg-gray-200 p-4 border-b border-gray-300 text-right rounded-t-lg">
-					Not 
+					Not Published
 				</div>
 			<%end%>
 			<!-- Page Elements -->

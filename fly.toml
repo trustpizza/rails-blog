@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for a-little-love-story on 2024-05-24T09:09:39-04:00
+# fly.toml app configuration file generated for love-story on 2024-05-24T16:10:13-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'a-little-love-story'
+app = 'love-story'
 primary_region = 'ewr'
 console_command = '/rails/bin/rails console'
 
