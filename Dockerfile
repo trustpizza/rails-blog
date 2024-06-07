@@ -7,13 +7,17 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 # Rails app lives here
 WORKDIR /rails
 
+# Define build-time arguments
+ARG GMAIL_USERNAME_ARG
+ARG GMAIL_PASSWORD_ARG
+
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development" \
-    GMAIL_USERNAME="maxelolsson@gmail.com" \
-    GMAIL_PASSWORD="lfoxxmzmcqrdnuyt"
+    GMAIL_USERNAME=${GMAIL_USERNAME_ARG} \
+    GMAIL_PASSWORD=${GMAIL_PASSWORD_ARG}
 
 # Throw-away build stage to reduce size of final image
 FROM base as build

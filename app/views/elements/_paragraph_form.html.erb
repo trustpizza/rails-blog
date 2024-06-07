@@ -8,7 +8,7 @@
     </div>
     <div class="hidden" data-editpost-target="form">
         <%= form_with(model: [ @post,  paragraph ]) do |form| %>
-            <%= form.rich_text_area :content %> <!--This ought to be turned into a turbostream eventually-->
+            <%= form.rich_text_area :content, data: { controller: "trix" } %> <!--This ought to be turned into a turbostream eventually-->
                 <div class="flex justify-between items-center">
                     <div class="flex gap-2">
                         <%= form.submit 'Save', data: {editpost_target: 'button'},  class: "block rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium cursor-pointer my-2" %>
