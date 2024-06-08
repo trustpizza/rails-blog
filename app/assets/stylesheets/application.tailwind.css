@@ -9,6 +9,18 @@
     pre {
         @apply bg-gray-800 text-white p-4 rounded-md overflow-x-auto !important;
     }
+    
+    .trix-content > h1 {
+        @apply text-3xl underline mb-2;
+    }
+
+    .trix-content > div, .trix-content {
+        @apply text-lg;
+    }
+
+    .trix-content > blockquote {
+        @apply border-l-4 text-2xl border-gray-500 pl-4 bg-blue-50 text-gray-600 italic;
+    }
 
     .truncate-50-chars {
         max-width: calc(1ch * 50);

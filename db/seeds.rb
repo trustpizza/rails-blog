@@ -43,7 +43,8 @@ num_of_posts.times do
     post = author.posts.create!(
         title: Faker::Lorem.sentence(word_count: 6),
         description: Faker::Lorem.paragraph(sentence_count: 4),
-        published: true
+        published: true,
+        published_at: Time.now
         )
     img_io = URI.open(img_url)
     post.header_image.attach(io:img_io, filename: File.basename(img_url))

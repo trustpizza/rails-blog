@@ -10,5 +10,5 @@ eagerLoadControllersFrom("controllers", application)
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
-import TrixController from "./trix_controller"
-application.register("trix", TrixController)
+// import TrixController from "./trix_controller"
+// application.register("trix", TrixController)
