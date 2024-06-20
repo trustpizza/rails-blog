@@ -9,12 +9,7 @@ module.exports = {
   theme: {
     extend: {
       maxHeight: {
-        "128": "32rem",
-        "80vh": "80vh"
-      },
-      maxWidth: {
-        "128": "32rem",
-        "80vw": "80vw"
+        "75vh": "75vh"
       }
     }
   }
