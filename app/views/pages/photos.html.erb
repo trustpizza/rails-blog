@@ -7,11 +7,8 @@
 
     <div data-image-modal-target="modal" class="fixed inset-0 flex items-center justify-center hidden" data-action="click->image-modal#closeModal">
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-        <div class="relative z-10 bg-white rounded-md m-4 max-w-80vw max-h-80vh overflow-auto">
-            <button class="absolute top-0 right-0 m-4 bg-white text-gray-800 px-2 py-1 rounded-lg hover:bg-gray-200 transition-colors" data-action="click->image-modal#closeModal">
-                Close
-            </button>
-            <img src="" alt="" class="rounded-md max-w-full max-h-full" data-image-modal-target="targetImage">
+        <div class="relative z-10 bg-white rounded-md p-2 m-4 md:max-w-80vw md:max-h-80vh flex">
+            <img src="" alt="" class="rounded-md" data-image-modal-target="targetImage">
         </div>
     </div>
 </div>
