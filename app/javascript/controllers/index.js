@@ -9,3 +9,6 @@ eagerLoadControllersFrom("controllers", application)
 
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
+
+import ImageModalController from "./image_modal_controller"
+application.register("image-modal", ImageModalController)
