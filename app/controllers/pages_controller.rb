@@ -17,5 +17,6 @@ class PagesController < ApplicationController
     header_images = Post.published.includes(header_image_attachment: :blob).map { |post| post.header_image }
     element_images = Element.joins(:post).where(posts: { published: true }).includes(image_attachment: :blob).map { |element| element.image if element.image.attached? }.compact  
     @photos = header_images + element_images
+    @photos = @photos.shuffle
   end
 end
