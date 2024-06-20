@@ -5,10 +5,17 @@
         </div>
     <% end %>
 
-    <div data-image-modal-target="modal" class="fixed inset-0 flex items-center justify-center hidden" data-action="click->image-modal#closeModal">
-        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-        <div class="relative z-10 bg-white rounded-md p-2 m-4 md:max-w-screen-xl w-auto md:max-h-80vh flex items-center justify-center">
-            <img src="" alt="" class="rounded-md max-w-full max-h-full">
+    <div data-image-modal-target="modal" tabindex="-1" aria-hidden="true" class="hidden fixed top-0 right-0 left-0 z-50 justify-center items-center h-screen w-screen md:inset-0 h-[calc(100%-1rem)] max-h-full" data-action="click->image-modal#closeModal">
+        <div class="absolute inset-0 bg-black bg-opacity-60 h-screen w-screen"></div>
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="relative p-4 w-full max-w-2xl max-h-full flex items-center justify-center">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="p-4 md:p-5 space-y-4">
+                        <img src="" alt="" class="h-auto max-w-full rounded-lg" data-image-modal-target="targetImage">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
